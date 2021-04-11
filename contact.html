@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="utf-8">
+	<meta name="author1" content="Andrei Rosu">
+	<meta name="author2" content="Anton Sfabu">
+    <title>OnT - Contact</title>
+	<link rel="stylesheet" href="style.css">
+  </head>
+  
+  <body>
+	<header>
+		<h1>Online Toys</h1>
+	</header>
+	
+	<hr class="above">
+	
+	<nav>
+		<ul>
+			<li class="nav_bar"><a href="./index.html">Acasă</a></li>
+			<li class="nav_bar"><a href="./cos.html">Coșul meu</a></li>
+			<li class="nav_bar"><a href="./jucarii.html">Jucării</a></li>
+			<li class="nav_bar"><a href="./boardgames.html">Boardgames</a></li>
+			<li class="nav_bar"><a href="#">Contact</a></li>
+
+		</ul>
+	</nav>
+	
+	<hr class="below">
+	
+	<main>
+		<div class="grid-container-contact"> 
+			<div class="center_item">
+				<h2>Caută-ne la nevoie!</h2>
+				<div class="middletext">
+					<label for="reason">Din ce motiv doriți să ne contactați? (Alegeți un motiv din listă)</label>
+					<select name="reason" id="reason">
+					  <optgroup label="Am o problemă">
+						<option>Nu reușesc să-mi creez un cont</option>
+						<option>Mi-am uitat parola</option>
+						<option>Nu știu unde e comanda mea</option>
+					  </optgroup>
+					  <optgroup label="Feedback">
+						<option>Aprecieri</option>
+						<option>Recomandări</option>
+					  </optgroup>
+					</select>
+				</div>
+				
+				<div class="middletext">
+					<p>Avem nevoie de câteva date din partea dumneavoastră:</p>
+					<form>
+						<label for="fname">Nume:</label>
+						<input type="text" id="fname" name="fname" class="data"><br>
+						<label for="lname">Prenume:</label>
+						<input type="text" id="lname" name="lname" class="data"><br>
+						<label for="email">Adresă e-mail:</label>
+						<input type="text" id="email" name="email" size="30" class="data"><br>
+						
+						<label for="fname"><strong>Mesaj:</strong></label><br>
+							<textarea id="msg" name="msg" class="msg" cols="100" rows="20">
+							</textarea>
+						<br>
+						<input type="submit" value="Trimite" class="send-bttn">
+					</form>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<footer>
+	</footer>
+	
+  </body>
+</html>

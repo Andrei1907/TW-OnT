@@ -1,0 +1,596 @@
+header {
+	background-image: url("Poze/banner.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: #e17a5f; /*culoare header de fundal*/
+	height: 175px;
+	border-radius: 25px 25px 0px 0px;
+	margin: 0px 3% 0px 3%;
+	text-align: center;
+}
+
+header h1 {
+	color: #f4f1de; /*culoare header text*/
+	padding-top: 75px;
+	font-size: 75px;
+	font-family: Verdana;
+}
+
+.above {
+	border-top: 3px dashed #424775;
+}
+
+.between {
+	border-top: 5px dashed #424775;
+	width: 90%;
+}
+
+.below {
+	border-top: 3px dashed #424775;
+}
+
+nav {
+	height: 50px;
+	background-color: #424775;
+	margin: 10px 0 10px 0;
+	overflow:hidden;
+}
+
+nav ul {
+	list-style-type: none;
+	text-align: center;
+	padding: 8px;
+	font-size: 0px;
+}
+
+nav ul li {
+	display: inline;
+}
+
+.nav_bar a{
+	text-decoration: none;
+	color: #edb66e; /*culoare text nav_bar*/
+	font-size: 30px;
+	font-family: 'Trebuchet MS';
+	padding: 8px 70px 9px 70px;
+}
+
+.nav_bar a:hover {
+	color: #e17a5f; /*culoare hover text*/
+	background-color: #abd6ba;
+}
+
+main {
+	width: auto;
+	height: auto;
+	background-color: #f4f1de;
+	margin: 0px 3% 0px 3%;
+
+}
+	.container_image_text{
+		position: relative;
+		width: 100%; height: 100%;
+		overflow: hidden;
+		padding: 0px;
+	}
+	.center_text_index{ 
+		position: absolute;
+		top: 40%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-family: Verdana;
+		font-size: 40px;
+		color: #f4f1de;
+		background-color: rgb(66,71,117,0.8); /*culoare text mijloc -Jucarii si Boardgames - de fundal cu transparenta*/
+		border-radius: 25px;
+		padding: 8px;
+	}
+
+	.left_item_top { 
+		grid-area: itemLT;
+		overflow: hidden;
+	}
+	.left_item_bottom { grid-area: itemLB; overflow: hidden;}
+	.center_left_item {
+		grid-area: itemCL;
+		background-image: url("Poze/index/jucarii.png");
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+	.center_left_item:hover { 
+		background-image: url("Poze/index/jucariihover.png");
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+	.center_right_item { 
+		grid-area: itemCR;
+		background-image: url("Poze/index/boardgames.png");
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+	.center_right_item:hover { 
+		background-image: url("Poze/index/boardgameshover.png");
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+	.right_item { 
+		grid-area: itemR;
+		overflow: hidden;
+	}
+	.center_item {
+		grid-area: itemC;
+	}
+	.only_left_item {
+		grid-area: itemL;
+	}
+	.only_right_item {
+		grid-area: itemR;
+	}
+	 
+	.grid-container-index {
+		display: grid;
+		grid-template-areas:
+			'itemLT itemLT itemCL itemCL itemCL itemCR itemCR itemCR itemR itemR'
+			'itemLB itemLB itemCL itemCL itemCL itemCR itemCR itemCR itemR itemR';
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+		grid-gap: 10px;
+		height: 100%;
+		padding: 10px;
+		background-color: #f4f1de; /*culoarea containerului de fundal, marginile care se vad, eu le-as pune albe*/
+	}
+	.grid-container-index > div {
+		background-color: #abd6ba; /*culoarea componentelor din cointainer fundal, ce se vede in spatele imag si a scrisului*/
+		text-align: center;
+		padding: 0px 0;
+		font-size: 30px;
+	}
+	.grid-container-contact {
+		display: grid;
+		grid-template-areas:
+			'itemC';
+		grid-template-columns: 1fr;
+		grid-gap: 10px;
+		height: 100%;
+		padding: 10px;
+		background-color: #f4f1de;
+	}
+	.grid-container-contact > div {
+		background-color: #abd6ba;
+		text-align: center;
+		padding: 0px 0;
+		font-size: 30px;
+	}
+	.grid-container-item {
+		display: grid;
+		grid-template-areas:
+			'itemL itemR';
+		grid-template-columns: 2fr 3fr;
+		grid-gap: 10px;
+		height: 100%;
+		padding: 10px;
+		background-color: #f4f1de;
+	}
+	.grid-container-item > div {
+		background-color: #abd6ba;
+		text-align: center;
+		padding: 0px 0;
+		font-size: 30px;
+	}
+	
+	.center_text_index:hover{
+		background-color: #abd6ba; /*culoare hover de fundal*/
+		color: #e17a5f; /*culoare hover text*/
+	}
+	
+main h2 {
+	font-family: Verdana;
+	font-size: 30px;
+	color: #424775;
+}
+	
+main h3 {
+	font-family: Verdana;
+	font-size: 22px;
+	color: #424775;
+}
+
+.text_button {
+	font-family: Verdana;
+	font-size: 25px;
+	color: #424775;
+}
+
+.text_button:hover {
+	text-decoration: none;
+	color: #e17a5f;
+}
+
+.middletext {
+	font-family: 'Trebuchet MS';
+	font-size: 20px;
+}
+
+.middletext_login {
+	margin-top: 30px;
+	margin-bottom: 50px;
+	font-family: 'Trebuchet MS';
+	font-size: 20px;
+	text-align: center;
+}
+
+.grid-container-contact .middletext {
+	text-align: left;
+	padding-left: 5%;
+}
+
+.data {
+	border: none;
+	border-bottom: 3px solid #e17a5f;
+	background-color: #abd6ba; /*culoare hover de fundal*/
+}
+
+.msg {
+	width: 95%;
+	height: 150px;
+	margin-top: 10px;
+	font-size: 15px;
+	overflow: scroll;
+}
+
+.send-bttn {
+	float: right;
+	margin: 15px 85px 10px 0px;
+}
+
+.item_description {
+	text-align: justify;
+	padding: 0px 10px 0px 10px;
+}
+
+.item_description p {
+	font-size: 17px;
+}
+
+.item_pic {
+	width: 400px;
+	height: 400px;
+	margin-top: 15px;
+	border-radius: 50%;
+}
+.left_item_top .item_pic {
+	width: 175px;
+	height: 175px;
+	margin-top: 0px;
+}
+.left_item_top p {
+	font-size: 23px;
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+.left_item_top a {
+	text-decoration: none;
+	color: black;
+}
+.left_item_top a .middletext:hover {
+	font-weight: bold;
+}
+
+.button_left{ 
+	position: absolute;
+    bottom: 0;
+    left: 0;
+	margin-left: 10px;
+	margin-top: 10px;
+	font-family: Verdana;
+	font-size: 60%;
+	color: #f4f1de;
+	background-color: #e17a5f; /*culoare text mijloc -Jucarii si Boardgames - de fundal cu transparenta*/
+	border-radius: 25px;
+	padding: 8px;
+}
+
+.button_right{ 
+	position: absolute;
+    bottom: 0;
+    right: 0;
+	margin-right: 10px;
+	margin-top: 10px;
+	font-family: Verdana;
+	font-size: 60%;
+	color: #f4f1de;
+	background-color: rgb(66,71,117,0.8); /*culoare text mijloc -Jucarii si Boardgames - de fundal cu transparenta*/
+	border-radius: 25px;
+	padding: 8px;
+}
+
+.button_right:hover{ 
+	background-color: #e17a5f; /*culoare text mijloc -Jucarii si Boardgames - de fundal cu transparenta*/
+}
+
+footer {
+	background-color: #424775;
+	height: 30px;
+	margin: 0px 3% 0px 3%;
+	border-radius: 0px 0px 20px 20px;
+}
+
+
+/*specific pagina boardgames si jucarii*/
+
+.search { 
+	grid-area: itemS;
+	overflow: hidden;
+}
+.search_button {
+	text-decoration:none;
+	color:#424775;
+}
+	
+.lista_produse {
+	grid-area: itemLP;
+	position:relative;
+}
+.lista_produse .item_pic {
+	width: 170px;
+	height: 170px;
+	margin-top: 10px;
+}
+
+.container_next_button{
+	grid-area: itemNB;
+}
+.container_next_button > div{
+	width:100%;
+	height:100%;
+	/*background-color:rgb(192,192,192);*/
+}
+.container_previous_button > div{
+	width:100%;
+	height:100%;
+	/*background-color:rgb(192,192,192);*/
+}
+.container_previous_button{
+	grid-area: itemPB;
+}
+.grid-container_produse { 
+	display: grid;
+	grid-template-areas:
+		'itemS itemPB itemLP itemLP itemLP itemNB '
+		'itemS itemPB itemLP itemLP itemLP itemNB ';
+	grid-template-columns: 5fr 1fr 8fr 8fr 8fr 1fr;
+	grid-gap: 10px;
+	height: 100%;
+	padding: 10px;
+	background-color: #f4f1de; /*culoare containerului de fundal, marginile care se vad, eu le-as pune albe*/	
+}
+
+.grid-container_produse > div {
+	background-color: #abd6ba; /*culoare componentelor din cointainer fundal, ce se vede in spatele imag si a scrisului*/
+	text-align: center;
+	padding: 0px 0;
+	font-size: 30px;
+}
+.mini_produs {
+	height:100%;
+	width:100%;
+	display:inline-block;
+	padding:0px 0px 0px 0px;
+	background-color: #abd6ba;
+}
+.mini_produs:hover {
+	background-color: #95c1a3;
+}
+.mini_produs a {
+	text-decoration: none;
+	color: black;
+}
+.mini_produs a .middletext:hover {
+	font-weight: bold;
+}
+.mini_produs .button_left {
+	font-size: 15px;
+}
+.mini_produs .button_right {
+	font-size: 15px;
+}
+
+.produs1 {
+	position:absolute;
+	top:0%;right:68%;bottom:52%;left:0%;
+}
+
+.produs2 {
+	position:absolute;
+	top:0%;right:34%;bottom:52%;left:34%;
+}
+.produs3 {
+	position:absolute;
+	top:0%;right:0%;bottom:52%;left:68%;
+}
+.produs4 {
+	position:absolute;
+	top:52%;right:68%;bottom:0%;left:0%;
+}
+.produs5 {
+	position:absolute;
+	top:52%;right:34%;bottom:0%;left:34%;
+}
+.produs6 {
+	position:absolute;
+	top:52%;right:0%;bottom:0%;left:68%;
+}
+.scroll_checkbox {
+	overflow-y:scroll;
+	overflow-x:hidden;
+	width:93%;
+	height:80%;
+	margin:0px 0px 10px 20px;
+	text-align:left;
+}
+.checkbox_block {
+	font-size:20px;
+}
+.scroll_checkbox > p {
+	margin-bottom:0;
+}
+
+.report_list {
+	margin-top: 10px;
+	margin-right: 10px;
+	text-align: left;
+}
+
+.report_list_ol a {
+	text-decoration: none;
+}
+
+.report_list_ol h3:hover {
+	color: #e17a5f;
+}
+
+.report_list_ul {
+	list-style-type: none;
+}
+
+.report_sublist {
+	font-family: 'Trebuchet MS';
+	font-size: 22px;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+.both {
+	background-color: #edb66e;
+}
+
+.andrei {
+	background-color: #e17a5f;
+}
+
+.tony {
+	background-color: #f4f1de;
+}
+
+
+
+.produs_top {
+	grid-area:itemPTOP;
+	position:relative;
+}
+.produs_top > p{
+	position:absolute;
+	top:5%;right:auto;bottom:auto;left:5%;
+	font-family: 'Trebuchet MS';
+	font-size: 30px;
+	font-weight:bold;
+}
+
+.grid-container_clasament {
+	display: grid;
+	grid-template-areas:
+		'itemPTOP itemLP itemLP '
+		'itemPTOP itemLP itemLP ';
+	grid-template-columns: 13fr 8fr 8fr ;
+	grid-gap: 10px;
+	height: 100%;
+	padding: 10px;
+	background-color: #f4f1de;
+}
+
+.grid-container_clasament > div {
+	background-color: #abd6ba; /*culoare componentelor din cointainer fundal, ce se vede in spatele imag si a scrisului*/
+	text-align: center;
+	padding: 0px 0;
+	font-size: 30px;
+}
+
+.produs_top2 {
+	position:absolute;
+	top:0%;right:51%;bottom:52%;left:0%;
+}
+
+.produs_top3 {
+	position:absolute;
+	top:0%;right:0%;bottom:52%;left:51%;
+}
+
+.produs_top4 {
+	position:absolute;
+	top:52%;right:51%;bottom:0%;left:0%;
+}
+
+.produs_top5 {
+	position:absolute;
+	top:52%;right:0%;bottom:0%;left:51%;
+}
+.paragraph_top {
+	position:absolute;
+	top:5%;right:auto;bottom:auto;left:5%;
+	font-family: 'Trebuchet MS';
+	font-size: 20px;
+	font-weight:bold;
+}
+
+/*specific pagina cos*/
+.date_livrare {
+	grid-area:itemDL;
+	position:relative;
+}
+.grid-container_cos {
+	display: grid;
+	grid-template-areas:
+		'itemPB itemLP itemNB'
+		'itemDL itemDL itemDL';
+	grid-template-columns: 1fr 29fr 1fr;
+	grid-template-rows:10fr 11fr;
+	grid-gap: 10px;
+	height: 100%;
+	padding: 10px;
+	background-color: #f4f1de;
+}
+
+.grid-container_cos > div {
+	background-color: #abd6ba; /*culoare componentelor din cointainer fundal, ce se vede in spatele imag si a scrisului*/
+	text-align: center;
+	padding: 0px 0;
+	font-size: 30px;
+}
+
+.produs_cos1 {
+	position:absolute;
+	top:0%;right:68%;bottom:0%;left:0%;	
+}
+.produs_cos2 {
+	position:absolute;
+	top:0%;right:34%;bottom:0%;left:34%;	
+}
+.produs_cos3 {
+	position:absolute;
+	top:0%;right:0%;bottom:0%;left:68%;	
+}
+.button_right_cos {
+	position: absolute;
+	bottom: 1%;
+	right: 5%;
+	font-family: Verdana;
+	font-size: 60%;
+	color: #f4f1de;
+	background-color: #e17a5f; /*culoare text mijloc -Jucarii si Boardgames - de fundal cu transparenta*/
+	border-radius: 25px;
+	padding: 8px;
+}
+.lista_produse .button_right_cos {
+	font-size: 12px;
+	margin-bottom: 35px;
+}
+.date_livrare >.middletext {
+	text-align: left;
+	padding-left: 5%;
+}
