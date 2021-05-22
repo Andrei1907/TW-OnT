@@ -78,12 +78,17 @@ session_start();
 			<div class="right_item">
 				<p class="middletext">Ești gata să îți mărești colecția de jocuri și jucării?<br>Începe cumpărăturile acum!</p>
 				<hr class="below">
+
+				<?php if(!isset($_SESSION['user_id'])) : ?>
 				<a class="text_button" href="./login.php">Loghează-te!</a>
 				<p class="middletext">Nu ai un cont?</p>
 				<a class="text_button" href="./create.php">Creează-ți unul acum!</a>
-                <hr class="below">
+
+				<?php else : ?>
 				<p class="middletext">Bună, <?php echo $user_data['f_name'];?>!</p>
                 <a class="text_button" href="./logout.php">Deloghează-te!</a>
+
+				<?php endif; ?>
 			</div>
 			
 		</div>
