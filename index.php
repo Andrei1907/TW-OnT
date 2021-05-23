@@ -88,7 +88,11 @@ session_start();
 				<p class="middletext">Bună, <?php echo $user_data['f_name'];?>!</p>
                 <a class="text_button" href="./logout.php">Deloghează-te!</a>
 
-				<?php endif; ?>
+				<?php endif; 
+				if($user_data['admin'] == 1):?>
+				<p class="middletext">Bună, admin <?php echo $user_data['f_name'];?>!</p>
+                <a class="text_button" href="./adminpages/adminpage.php">Administrare</a>        	
+				<?php endif;?>
 			</div>
 			
 		</div>

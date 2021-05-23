@@ -349,13 +349,13 @@ footer {
 	height:100%;
 	/*background-color:rgb(192,192,192);*/
 }
+.container_previous_button{
+	grid-area: itemPB;
+}
 .container_previous_button > div{
 	width:100%;
 	height:100%;
 	/*background-color:rgb(192,192,192);*/
-}
-.container_previous_button{
-	grid-area: itemPB;
 }
 .grid-container_produse { 
 	display: grid;
@@ -594,3 +594,58 @@ table, th, td {
 	text-align: left;
 	padding-left: 5%;
 }
+
+/*specific admin-page*/
+
+.grid-container_adminpage{
+	display: grid;
+	grid-template-areas:
+		'AdminLT AdminRT'
+		'AdminLB AdminRB';
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows:1fr 1fr;
+	grid-gap: 10px;
+	height: 500px;
+	padding: 10px;
+	background-color: #f4f1de;
+}
+.admin_left_top {
+	grid-area:AdminLT;
+	position:relative;
+}
+.admin_left_bottom {
+	grid-area:AdminLB;
+	position:relative;
+}
+.admin_right_top {
+	grid-area:AdminRT;
+	position:relative;
+}
+.admin_right_bottom {
+	grid-area:AdminRB;
+	position:relative;
+}
+.grid-container_adminpage > div {
+	background-color: #abd6ba; /*culoare componentelor din cointainer fundal, ce se vede in spatele imag si a scrisului*/
+	text-align: center;
+	padding: 0px 0;
+	font-size: 30px;
+}
+.button_admin_toys {
+	position:absolute;
+	top:0%;right:0%;bottom:0%;left:0%;
+}
+.button_admin_boardgames {
+	position:absolute;
+	top:0%;right:0%;bottom:0%;left:0%;
+}
+.button_admin_user {
+	position:absolute;
+	top:0%;right:0%;bottom:0%;left:0%;
+}
+.button_admin_statistics {
+	position:absolute;
+	top:0%;right:0%;bottom:0%;left:0%;
+}
+
+	
