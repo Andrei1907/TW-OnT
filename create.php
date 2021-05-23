@@ -17,7 +17,8 @@ session_start();
         if(!empty($l_name) && !empty($f_name) && !empty($email) && !empty($password1) && !empty($password2))
         {
             $user_id = genRand(20);
-            $query = "insert into users (user_id,f_name,l_name,email,password) values ('$user_id','$f_name','$l_name','$email','$password1')";
+			$pass = md5($password1);
+            $query = "insert into users (user_id,f_name,l_name,email,password) values ('$user_id','$f_name','$l_name','$email','$pass')";
 
             mysqli_query($con, $query);
             

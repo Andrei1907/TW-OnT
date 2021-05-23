@@ -13,13 +13,15 @@ session_start();
         if(!empty($email) && !empty($password))
         {
             //read from the database - does the user exist?
+			$pass = md5($password);
+
             $query = "select * from users where email = '$email' limit 1";
 
             $queryResult = mysqli_query($con, $query);
             if($queryResult && mysqli_num_rows($queryResult) > 0)
             {
                 $user_data = mysqli_fetch_assoc($queryResult);
-                if($user_data['password'] === $password)
+                if($user_data['password'] === $pass)
                 {
                     $_SESSION['user_id'] = $user_data['user_id'];
                     header("Location: index.php");
