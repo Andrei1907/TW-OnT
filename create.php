@@ -92,7 +92,7 @@ session_start();
 
 					<?php if($valid_entry == 4) : ?>
 						<p style="color: #e17a5f;">Există deja un cont asociat cu această adresă de e-mail!</p>
-					<?php else if($valid_entry == 1) : ?>
+					<?php elseif($valid_entry == 1) : ?>
 						<p style="color: #e17a5f;">Introduceți nume și prenume valide!</p>
 					<?php elseif($valid_entry == 2) : ?>
 						<p style="color: #e17a5f;">Introduceți o adresă de e-mail validă!</p>
