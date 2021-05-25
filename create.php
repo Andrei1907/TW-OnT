@@ -4,8 +4,12 @@ session_start();
     include("connection.php");
     include("functions.php");
 
+	$valid_entry = 0;
+
     if($_SERVER['REQUEST_METHOD'] == "POST")
     {
+		$valid_entry = 0;
+
         //something was posted
         $l_name = $_POST['l_name'];
         $f_name = $_POST['f_name'];
@@ -13,8 +17,28 @@ session_start();
         $password1 = $_POST['password1'];
         $password2 = $_POST['password2'];
 
-        //checks necessary to add data into database (like pass1==pass2, first name and last name contain no digits, etc)
-        if(!empty($l_name) && !empty($f_name) && !empty($email) && !empty($password1) && !empty($password2))
+		//is there an account with this email already in our database?
+		$query = "select * from users where email = '$email' limit 1";
+
+		$queryResult = mysqli_query($con, $query);
+		if($queryResult && mysqli_num_rows($queryResult) > 0)
+		{
+			$valid_entry = 4;
+		}
+        //other checks necessary before adding data into database
+        else if(strpbrk($l_name, '1234567890') == TRUE || strpbrk($f_name, '1234567890') == TRUE)
+		{
+			$valid_entry = 1;
+		}
+		else if(strpbrk($email, '@') == FALSE)
+		{
+			$valid_entry = 2;
+		}
+		else if($password1 != $password2)
+		{
+			$valid_entry = 3;
+		}
+		else if(!empty($l_name) && !empty($f_name) && !empty($email) && !empty($password1) && !empty($password2))
         {
             $user_id = genRand(20);
 			$pass = md5($password1);
@@ -24,10 +48,6 @@ session_start();
             
             header("Location: login.php");
             die;
-        }
-        else{
-            //a message to warn the user about invalid info
-            echo "Nu-i bun";
         }
     }
 
@@ -39,7 +59,7 @@ session_start();
     <meta charset="utf-8">
 	<meta name="author1" content="Andrei Rosu">
 	<meta name="author2" content="Anton Sfabu">
-    <title>OnT - Contact</title>
+    <title>OnT - Creare cont</title>
 	<link rel="stylesheet" href="style.css">
   </head>
   
@@ -69,6 +89,17 @@ session_start();
 				<h2>Hai să facem un cont personal!</h2>
 				<div class="middletext" style="margin-bottom:50px;">
 					<p>Nu durează mult. Vă rugăm să completați câmpurile următoare cu datele necesare.</p>
+
+					<?php if($valid_entry == 4) : ?>
+						<p style="color: #e17a5f;">Există deja un cont asociat cu această adresă de e-mail!</p>
+					<?php else if($valid_entry == 1) : ?>
+						<p style="color: #e17a5f;">Introduceți nume și prenume valide!</p>
+					<?php elseif($valid_entry == 2) : ?>
+						<p style="color: #e17a5f;">Introduceți o adresă de e-mail validă!</p>
+					<?php elseif($valid_entry == 3) : ?>
+						<p style="color: #e17a5f;">Introduceți aceeași parolă de două ori!</p>
+					<?php endif;?>
+
 					<form method="post">
 						<label>Nume:</label>
 						<input type="text" name="l_name" id="fname" class="data"><br>

@@ -84,14 +84,14 @@ session_start();
 				<p class="middletext">Nu ai un cont?</p>
 				<a class="text_button" href="./create.php">Creează-ți unul acum!</a>
 
+				<?php elseif($user_data['admin'] == 1) : ?>
+				<p class="middletext">Bună, admin <?php echo $user_data['f_name'];?>!</p>
+				<a class="text_button" href="./logout.php">Deloghează-te!</a>
+				<a class="text_button" href="./adminpages/adminpage.php">Administrare</a>
+
 				<?php else : ?>
 				<p class="middletext">Bună, <?php echo $user_data['f_name'];?>!</p>
-                <a class="text_button" href="./logout.php">Deloghează-te!</a>
-
-				<?php endif; 
-				if(isset($_SESSION['user_id']) && $user_data['admin'] == 1):?>
-				<p class="middletext">Bună, admin <?php echo $user_data['f_name'];?>!</p>
-                <a class="text_button" href="./adminpages/adminpage.php">Administrare</a>        	
+				<a class="text_button" href="./logout.php">Deloghează-te!</a>
 				<?php endif;?>
 			</div>
 			
