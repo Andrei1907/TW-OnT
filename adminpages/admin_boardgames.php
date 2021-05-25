@@ -50,7 +50,7 @@ session_start();
 				<h2>Configurare produse: Boardgames</h2>
 				<div class="middletext">
 					
-					<form method="get"><p>Selectați acțiunea
+				<form method="get"><p>Selectați acțiunea
 					<select name='admin_action' onchange='if(this.value != 0) { this.form.submit(); }'>
 
 						<option value='0'>Alege...</option>
@@ -74,49 +74,91 @@ session_start();
        				 case "1":
           			?>
 					  	<p>Adăugați oferta:</p>
-						<form>
-						<label for="id_produs">ID-ul produsului:</label>
-						<input type="text" id="id_produs" name="id_produs" class="data"><br>
+						<form action="admin_functions.php" method="post">
+
+						<label for="product_id">ID-ul produsului:</label>
+						<input type="text" id="product_id" name="product_id" class="data"><br>
 						<label for="discount">Oferta (în %):</label>
 						<input type="text" id="discount" name="discount" class="data"><br>
-						<input type="submit" value="Trimite" class="send-bttn">
+						<input type="submit" name="add_discount_boardgames" class="send-bttn">
 					</form>
 					<?php
        				 break;
         			 case "2":
 					?>
 						<p>Actualizați produsul:</p>
-						<form>
-						<label for="id_produs">ID-ul produsului:</label>
-						<input type="text" id="id_produs" name="id_produs" class="data"><br>
-						<label for="UPDATE">UPDATE :</label>
-						<input type="text" id="UPDATE" name="UPDATE" class="data"><br>
-						<input type="submit" value="Trimite" class="send-bttn">
+						<form action="admin_functions.php" method="post">
+						<label for="product_id">ID-ul produsului:</label>
+						<input type="text" id="product_id" name="product_id" class="data"><br>
+
+						<label for="product_name">Nume produs nou:</label>
+						<input type="text" id="product_name" name="product_name" class="data"><br>
+
+						<label for="age">Categoria de vârstă:</label>
+						<input type="text" id="age" name="age" class="data"><br>
+
+						<label for="type">Tipul:</label>
+						<input type="text" id="type" name="type" class="data"><br>
+
+						<label for="number_players">Numarul de jucători:</label>
+						<input type="text" id="number_players" name="number_players" class="data"><br>
+						
+						<label for="price">Prețul nou:</label>
+						<input type="text" id="price" name="price" class="data"><br>
+
+						<label for="description">Descriere nouă:</label>
+						<input type="text" id="description" name="description" class="data"><br>
+
+						<label for="picture">Poza nouă:</label>
+						<input type="file" id="picture" name="picture" class="data"><br>
+
+						<input type="submit" name="update_boardgames" class="send-bttn">
 					</form>
 					<?php
        				 break;
        				 case "3":
        			    ?>
 					   	<p>Ștergeți produsul:</p>
-						<form>
-						<label for="tema">tema:</label>
-						<input type="text" id="tema" name="tema" class="data"><br>
-						<label for="DELETE">DELETE :</label>
-						<input type="text" id="DELETE" name="DELETE" class="data"><br>
-						<input type="submit" value="Trimite" class="send-bttn">
+						<form action="admin_functions.php" method="post">
+
+						<label for="product_id">ID-ul produsului:</label>
+						<input type="text" id="product_id" name="product_id" class="data"><br>
+
+						<input type="submit" name="delete_boardgames" class="send-bttn">
 					</form>
 					<?php
        				 break;
        				 case "4":
 					?>
 						<p>Adăugați produsul:</p>
-					 	<form>
-						<label for="TODO">TODO:</label>
-						<input type="text" id="TODO" name="TODO" class="data"><br>
-						<label for="ADD">ADD :</label>
-						<input type="text" id="ADD" name="ADD" class="data"><br>
-						<input type="submit" value="Trimite" class="send-bttn">
-					</form> 
+					 	<form action="admin_functions.php" method="post">
+							 
+						<label for="product_id">ID-ul produsului:</label>
+						<input type="text" id="product_id" name="product_id" class="data"><br>
+
+						<label for="product_name">Nume produs:</label>
+						<input type="text" id="product_name" name="product_name" class="data"><br>
+
+						<label for="age">Categoria de vârstă:</label>
+						<input type="text" id="age" name="age" class="data"><br>
+
+						<label for="type">Tipul:</label>
+						<input type="text" id="type" name="type" class="data"><br>
+
+						<label for="number_players">Numarul de jucători:</label>
+						<input type="text" id="number_players" name="number_players" class="data"><br>
+
+						<label for="price">Prețul:</label>
+						<input type="text" id="price" name="price" class="data"><br>
+
+						<label for="description">Descriere:</label>
+						<input type="text" id="description" name="description" class="data"><br>
+
+						<label for="picture">Selectați o imagine:</label>
+						<input type="file" id="picture" name="picture" class="data"><br>
+
+						<input type="submit" name="add_new_boardgames" class="send-bttn">
+					</form>  
 					<?php
        				 break;
       				}} ?>

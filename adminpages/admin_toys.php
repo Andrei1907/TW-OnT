@@ -45,59 +45,126 @@ session_start();
 	<hr class="below">
 	
 	<main>
-	<div class="grid-container_adminpage"> 
-			
-			<div class="admin_left_top">
-				<div class="button_admin_toys">
-					<div class="container_image_text">
+		<div class="grid-container-contact"> 
+			<div class="center_item">
+				<h2>Configurare produse: Jucării</h2>
+				<div class="middletext">
+					
+					<form method="get"><p>Selectați acțiunea
+					<select name='admin_action' onchange='if(this.value != 0) { this.form.submit(); }'>
+
+						<option value='0'>Alege...</option>
+        				<option value='1'>Adaugă ofertă</option>
+         				<option value='2'>Actualizează produs</option>
+         				<option value='3'>Șterge produs</option>
+         				<option value='4'>Adaugă produs</option>
+				
+					</select></p></form>
+					
+
+				</div>
+				
+				<div class="middletext">
+					<?php 
+   					 if(isset($_GET['admin_action']) ){
+       				 $value = $_GET['admin_action'];
+					?>
+					<?php
+    				switch($value){
+       				 case "1":
+          			?>
+					  	<p>Adăugați oferta:</p>
+						<form action="admin_functions.php" method="post">
+
+						<label for="product_id">ID-ul produsului:</label>
+						<input type="text" id="product_id" name="product_id" class="data"><br>
+						<label for="discount">Oferta (în %):</label>
+						<input type="text" id="discount" name="discount" class="data"><br>
+						<input type="submit" name="add_discount_toy" class="send-bttn">
+					</form>
+					<?php
+       				 break;
+        			 case "2":
+					?>
+						<p>Actualizați produsul:</p>
+						<form action="admin_functions.php" method="post">
+						<label for="product_id">ID-ul produsului:</label>
+						<input type="text" id="product_id" name="product_id" class="data"><br>
+
+						<label for="product_name">Nume produs nou:</label>
+						<input type="text" id="product_name" name="product_name" class="data"><br>
+
+						<label for="age">Categoria de vârstă:</label>
+						<input type="text" id="age" name="age" class="data"><br>
+
+						<label for="material">Materialul:</label>
+						<input type="text" id="material" name="material" class="data"><br>
+
+						<label for="color">Culoarea:</label>
+						<input type="text" id="color" name="color" class="data"><br>
 						
-					<p>Modifică la categoria jucării</p>
-					<a href="admin_toys.php"><p class="center_text_index">JUCĂRII</p></a>
-					
-				</div>
-				</div>
+						<label for="price">Prețul nou:</label>
+						<input type="text" id="price" name="price" class="data"><br>
 
-			</div>
+						<label for="description">Descriere nouă:</label>
+						<input type="text" id="description" name="description" class="data"><br>
 
-			<div class="admin_left_bottom">
-				<div class="button_admin_boardgames">
-				<div class="container_image_text">
-					
-					<p>Modifică la categoria boardgames</p>
-					<a href="admin_boardgames.php"><p class="center_text_index">BOARDGAMES</p></a>
+						<label for="picture">Poza nouă:</label>
+						<input type="file" id="picture" name="picture" class="data"><br>
 
-				</div>
-				</div>
+						<input type="submit" name="update_toy" class="send-bttn">
+					</form>
+					<?php
+       				 break;
+       				 case "3":
+       			    ?>
+					   	<p>Ștergeți produsul:</p>
+						<form action="admin_functions.php" method="post">
 
-			</div>
+						<label for="product_id">ID-ul produsului:</label>
+						<input type="text" id="product_id" name="product_id" class="data"><br>
 
-			<div class="admin_right_top">
-				<div class="button_admin_user">
-				<div class="container_image_text">
-					
-					<p>Configureaza utilizatori</p>
-					<a href="admin_users.php"><p class="center_text_index">USERI</p></a>
+						<input type="submit" name="delete_toy" class="send-bttn">
+					</form>
+					<?php
+       				 break;
+       				 case "4":
+					?>
+						<p>Adăugați produsul:</p>
+					 	<form action="admin_functions.php" method="post">
+							 
+						<label for="product_id">ID-ul produsului:</label>
+						<input type="text" id="product_id" name="product_id" class="data"><br>
 
-				</div>
-				</div>
+						<label for="product_name">Nume produs:</label>
+						<input type="text" id="product_name" name="product_name" class="data"><br>
 
-			</div>
+						<label for="age">Categoria de vârstă:</label>
+						<input type="text" id="age" name="age" class="data"><br>
 
-			<div class="admin_right_bottom">
-				<div class="button_admin_statistics">
-				<div class="container_image_text">
+						<label for="material">Materialul:</label>
+						<input type="text" id="material" name="material" class="data"><br>
 
-					<p>Vezi statistici</p>
-					<a href="admin_statistics.php"><p class="center_text_index">STATISTICI</p></a>
+						<label for="color">Culoarea:</label>
+						<input type="text" id="color" name="color" class="data"><br>
+
+						<label for="price">Prețul:</label>
+						<input type="text" id="price" name="price" class="data"><br>
+
+						<label for="description">Descriere:</label>
+						<input type="text" id="description" name="description" class="data"><br>
+
+						<label for="picture">Selectați o imagine::</label>
+						<input type="file" id="picture" name="picture" class="data"><br>
+
+						<input type="submit" name="add_new_toy" class="send-bttn">
+					</form> 
+					<?php
+       				 break;
+      				}} ?>
 				
 				</div>
-				</div>
-
 			</div>
-			
-
-			
-			
 		</div>
 	</main>
 

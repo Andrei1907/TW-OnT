@@ -72,7 +72,7 @@ function isAdmin($con)
     }
 
     //redirect to login if necessary on certain pages
-    header("Location: login.php");
+    header("Location: ../login.php");
     die;
 }
 ?>
