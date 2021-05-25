@@ -45,7 +45,7 @@ session_start();
     <meta charset="utf-8">
 	<meta name="author1" content="Andrei Rosu">
 	<meta name="author2" content="Anton Sfabu">
-    <title>OnT - Contact</title>
+    <title>OnT - Logare</title>
 	<link rel="stylesheet" href="style.css">
   </head>
   
@@ -79,8 +79,6 @@ session_start();
 						<input type="text" name="email" id="email" size="30" class="data"><br>
 						<label for="pwd">Parola:</label>
 						<input type="password" name="password"  id="pwd"class="data"><br>
-                        <input type="checkbox" id="admin" name="admin" value="value">
-						<label for="email">Admin</label><br>
 						<input type="checkbox" id="remember" name="remember" value="value">
 						<label for="email">Ține-mă minte</label><br>
 
