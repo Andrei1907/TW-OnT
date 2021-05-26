@@ -34,11 +34,7 @@ session_start();
 	<nav>
 		<ul>
 			<li class="nav_bar"><a href="../index.php">Acasă</a></li>
-			<li class="nav_bar"><a href="../cos.php">Coșul meu</a></li>
-			<li class="nav_bar"><a href="../jucarii.php">Jucării</a></li>
-			<li class="nav_bar"><a href="../boardgames.php">Boardgames</a></li>
-			<li class="nav_bar"><a href="../contact.php">Contact</a></li>
-
+			<li class="nav_bar"><a href="./adminpage.php">Administrare</a></li>
 		</ul>
 	</nav>
 	
@@ -87,7 +83,7 @@ session_start();
         			 case "2":
 					?>
 						<p>Actualizați produsul:</p>
-						<form action="admin_functions.php" method="post">
+						<form action="admin_functions.php" method="post" enctype="multipart/form-data">
 						<label for="product_id">ID-ul produsului:</label>
 						<input type="text" id="product_id" name="product_id" class="data"><br>
 
@@ -95,7 +91,13 @@ session_start();
 						<input type="text" id="product_name" name="product_name" class="data"><br>
 
 						<label for="age">Categoria de vârstă:</label>
-						<input type="text" id="age" name="age" class="data"><br>
+						<select name='age'>
+							<option >Alege...</option>
+        					<option value="1">6+</option>
+         					<option value="2">10+</option>
+         					<option value="3">14+</option>
+         					<option value="4">18+</option>
+						</select><br>
 
 						<label for="type">Tipul:</label>
 						<input type="text" id="type" name="type" class="data"><br>
@@ -131,16 +133,22 @@ session_start();
        				 case "4":
 					?>
 						<p>Adăugați produsul:</p>
-					 	<form action="admin_functions.php" method="post">
+					 	<form action="admin_functions.php" method="post" enctype="multipart/form-data">
 							 
 						<label for="product_id">ID-ul produsului:</label>
 						<input type="text" id="product_id" name="product_id" class="data"><br>
 
 						<label for="product_name">Nume produs:</label>
 						<input type="text" id="product_name" name="product_name" class="data"><br>
-
+						
 						<label for="age">Categoria de vârstă:</label>
-						<input type="text" id="age" name="age" class="data"><br>
+						<select name='age'>
+							<option >Alege...</option>
+        					<option value="1">6+</option>
+         					<option value="2">10+</option>
+         					<option value="3">14+</option>
+         					<option value="4">18+</option>
+						</select><br>
 
 						<label for="type">Tipul:</label>
 						<input type="text" id="type" name="type" class="data"><br>
