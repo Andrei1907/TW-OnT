@@ -93,7 +93,7 @@ session_start();
 
 						<label for="age">Categoria de vârstă:</label>
 						<select name='age'>
-							<option >Alege...</option>
+							<option value="0">Alege...</option>
         					<option value="1">Sugari</option>
          					<option value="2">Copii</option>
          					<option value="3">Adolescenti</option>
@@ -143,7 +143,7 @@ session_start();
 
 						<label for="age">Categoria de vârstă:</label>
 						<select name='age'>
-							<option >Alege...</option>
+							<option value="0">Alege...</option>
         					<option value="1">Sugari</option>
          					<option value="2">Copii</option>
          					<option value="3">Adolescenti</option>

@@ -1,3 +1,38 @@
+<?php
+session_start();
+	$_SESSION;
+	include("connection.php");
+	include("functions.php");
+	//session page_number va fi reinitializat de fiecare data cand dam submit la filter, 
+	//si acolo se va initializa si variabila session query_boardgames
+	if(isset($_SESSION['$page_number']))
+	{
+		$page_number = $_SESSION['$page_number'];
+	}
+	else{
+		echo "Initializat cu 1! <br>";
+		$page_number = 1;
+	}
+
+	$product_array = set_6_products(6,($page_number-1)*6,1,$con);
+	
+	if(isset($_POST['previous_button'])){
+		$page_number = $page_number - 1;
+		if($page_number <= 0)
+			$page_number = 1;
+		$product_array = set_6_products(6,($page_number-1)*6,1,$con);
+		$_SESSION['$page_number'] = $page_number;
+	}
+	if(isset($_POST['next_button'])){
+		$page_number = $page_number + 1;
+		$product_array = set_6_products(6,($page_number-1)*6,1,$con);
+		if($product_array == NULL)
+			$page_number = $page_number - 1;
+		$product_array = set_6_products(6,($page_number-1)*6,1,$con);
+		$_SESSION['$page_number'] = $page_number;
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="ro">
   <head>
@@ -77,60 +112,70 @@
 			
 				<div class="produs1">
 					<div class="mini_produs" >
-					
+
 						<div class="container_image_text">
-							<a href="item.html"><img src="Poze/index/carcassonne.jpg" alt="Item" class="item_pic"></a>
-							<p class="button_left">150,00 RON</p>
+							<?php if($product_array[1]) :?>
+							<a href="item.html"><img src="Poze/Products/<?php echo nvl($product_array[1]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+							<p class="button_left"><?php echo $product_array[1]['price']*((100-$product_array[1]['discount'])/100); ?> RON</p>
 							<a href="#"><p class="button_right">Adaugă în coș</p></a>
-							<a href="item.html"><p class="middletext">Carcassonne</p></a>
+							<a href="item.html"><p class="middletext"><?php echo $product_array[1]['product_name']; ?></p></a>
+							<?php endif;?>
 						</div>
 						
 					</div>
 				</div>
 				<div class="produs2">
 					<div class="mini_produs" >
-					
+	
 						<div class="container_image_text">
-							<a href="item.html"><img src="Poze/index/carcassonne.jpg" alt="Item" class="item_pic"></a>
-							<p class="button_left">150,00 RON</p>
+							<?php if($product_array[2]) :?>
+							<a href="item.html"><img src="Poze/Products/<?php echo nvl($product_array[2]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+							<p class="button_left"><?php echo $product_array[2]['price']*((100-$product_array[2]['discount'])/100); ?> RON</p>
 							<a href="#"><p class="button_right">Adaugă în coș</p></a>
-							<a href="item.html"><p class="middletext">Carcassonne</p></a>
+							<a href="item.html"><p class="middletext"><?php echo $product_array[2]['product_name']; ?></p></a>
+							<?php endif;?>
 						</div>
 					
 					</div>
 				</div>
 				<div class="produs3">
 					<div class="mini_produs" >
-					
+						
 						<div class="container_image_text">
-							<a href="item.html"><img src="Poze/index/carcassonne.jpg" alt="Item" class="item_pic"></a>
-							<p class="button_left">150,00 RON</p>
+							<?php if($product_array[3]) :?>
+							<a href="item.html"><img src="Poze/Products/<?php echo nvl($product_array[3]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+							<p class="button_left"><?php echo $product_array[3]['price']*((100-$product_array[3]['discount'])/100); ?> RON</p>
 							<a href="#"><p class="button_right">Adaugă în coș</p></a>
-							<a href="item.html"><p class="middletext">Carcassonne</p></a>
+							<a href="item.html"><p class="middletext"><?php echo $product_array[3]['product_name']; ?></p></a>
+							<?php endif;?>
 						</div>
 					
 					</div>
 				</div>
 				<div class="produs4">
 					<div class="mini_produs" >
-					
+						
 						<div class="container_image_text">
-							<a href="item.html"><img src="Poze/index/carcassonne.jpg" alt="Item" class="item_pic"></a>
-							<p class="button_left">150,00 RON</p>
+							<?php if($product_array[4]) :?>
+							<a href="item.html"><img src="Poze/Products/<?php echo nvl($product_array[4]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+							<p class="button_left"><?php echo $product_array[4]['price']*((100-$product_array[4]['discount'])/100); ?> RON</p>
 							<a href="#"><p class="button_right">Adaugă în coș</p></a>
-							<a href="item.html"><p class="middletext">Carcassonne</p></a>
+							<a href="item.html"><p class="middletext"><?php echo $product_array[4]['product_name']; ?></p></a>
+							<?php endif;?>
 						</div>
 					
 					</div>
 				</div>
 				<div class="produs5">
 					<div class="mini_produs" >
-					
+
 						<div class="container_image_text">
-							<a href="item.html"><img src="Poze/index/carcassonne.jpg" alt="Item" class="item_pic"></a>
-							<p class="button_left">150,00 RON</p>
+							<?php if($product_array[5]) :?>
+							<a href="item.html"><img src="Poze/Products/<?php echo nvl($product_array[5]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+							<p class="button_left"><?php echo $product_array[5]['price']*((100-$product_array[5]['discount'])/100); ?> RON</p>
 							<a href="#"><p class="button_right">Adaugă în coș</p></a>
-							<a href="item.html"><p class="middletext">Carcassonne</p></a>
+							<a href="item.html"><p class="middletext"><?php echo $product_array[5]['product_name']; ?></p></a>
+							<?php endif;?>
 						</div>
 					
 					</div>
@@ -139,10 +184,12 @@
 					<div class="mini_produs" >
 					
 						<div class="container_image_text">
-							<a href="item.html"><img src="Poze/index/carcassonne.jpg" alt="Item" class="item_pic"></a>
-							<p class="button_left">150,00 RON</p>
+							<?php if($product_array[6]) :?>
+							<a href="item.html"><img src="Poze/Products/<?php echo nvl($product_array[6]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+							<p class="button_left"><?php echo $product_array[6]['price']*((100-$product_array[6]['discount'])/100); ?> RON</p>
 							<a href="#"><p class="button_right">Adaugă în coș</p></a>
-							<a href="item.html"><p class="middletext">Carcassonne</p></a>
+							<a href="item.html"><p class="middletext"><?php echo $product_array[6]['product_name']; ?></p></a>
+							<?php endif;?>
 						</div>
 					
 					</div>
@@ -151,10 +198,10 @@
 			</div>
 			
 			<div class="container_previous_button">
-				<div></div>
+				<div><td id = previous_button><form name="previous_button" method="POST" ><input type='hidden' name='previous_button' value='1' /><input type="submit" value="<"></form></td></div>
 			</div>
 			<div class="container_next_button">
-				<div></div>
+				<div><td id = next_button><form name="next_button" method="POST" ><input type='hidden' name='next_button' value='1' /><input type="submit" value=">"></form></td></div>
 			</div>
 			
 		</div>

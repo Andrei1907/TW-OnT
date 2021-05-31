@@ -45,7 +45,7 @@ session_start();
                 $fill=1;
             }
 
-            if(!empty($_POST['age'])){
+            if(!empty($_POST['age']) && $_POST['age']!=0){
                 $age_value=$_POST['age'];
                 switch($age_value){
                     case "1":
@@ -96,7 +96,7 @@ session_start();
                 $fill=1;
             }
 
-            if(!empty($_FILES['picture'])){
+            if(!empty($_FILES['picture']) && !empty($_FILES['picture']['size'])){
                 $file=$_FILES['picture'];
                 $picture = upload_image($file);
                 if($fill==0){
@@ -149,7 +149,7 @@ session_start();
     }
     //add_new_toy
     if(isset($_POST['add_new_toy'])){
-        if(!empty($_POST['product_id']) && !empty($_POST['product_name']) && !empty($_POST['age']) && !empty($_POST['material']) && !empty($_POST['color']) && !empty($_POST['price']) && !empty($_POST['description']) && !empty($_FILES['picture'])){
+        if(!empty($_POST['product_id']) && !empty($_POST['product_name']) && !empty($_POST['age']) && !empty($_POST['material']) && !empty($_POST['color']) && !empty($_POST['price']) && !empty($_POST['description']) && !empty($_FILES['picture']) && $_POST['age']!=0){
             
             $product_id=$_POST['product_id'];
             $product_name=$_POST['product_name'];
@@ -229,7 +229,7 @@ session_start();
                 $fill=1;
             }
 
-            if(!empty($_POST['age'])){
+            if(!empty($_POST['age'] && $_POST['age']!=0)){
                 $age=$_POST['age'];
                 if($fill==0){
                 $query .= "age = '$age' ";}
@@ -269,7 +269,7 @@ session_start();
                 $fill=1;
             }
 
-            if(!empty($_FILES['picture'])){
+            if(!empty($_FILES['picture']) && !empty($_FILES['picture']['size'])){
                 $file=$_FILES['picture'];
                 $picture = upload_image($file);
                 if($fill==0){
@@ -322,7 +322,7 @@ session_start();
     }
     //add_new_boardgames
     if(isset($_POST['add_new_boardgames'])){
-        if(!empty($_POST['product_id']) && !empty($_POST['product_name']) && !empty($_POST['age']) && !empty($_POST['type']) && !empty($_POST['number_players']) && !empty($_POST['price']) && !empty($_POST['description']) && !empty($_FILES['picture'])){
+        if(!empty($_POST['product_id']) && !empty($_POST['product_name']) && !empty($_POST['age']) && !empty($_POST['type']) && !empty($_POST['number_players']) && !empty($_POST['price']) && !empty($_POST['description']) && !empty($_FILES['picture']) && $_POST['age']!=0){
             
             $product_id = $_POST['product_id'];
             $product_name = $_POST['product_name'];
@@ -344,7 +344,7 @@ session_start();
                     break;
                 case "4":
                     $age="18+";
-                    break;
+                    break;  
             }
             $picture = upload_image($file);
             if($picture != NULL){
