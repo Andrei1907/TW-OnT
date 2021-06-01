@@ -9,6 +9,7 @@ session_start();
 		header("Location: ../index.php");
         die;
     }
+    
     //add_discount_toy
     if(isset($_POST['add_discount_toy'])){
         if(!empty($_POST['product_id']) && !empty($_POST['discount'])){
@@ -32,6 +33,7 @@ session_start();
         <a href="./admin_toys.php"><p class="center_text_index">ÎNAPOI</p></a>
         <?php
     }
+
     //update_toy
     if(isset($_POST['update_toy'])){
         if(!empty($_POST['product_id'])){
@@ -125,6 +127,7 @@ session_start();
         <a href="./admin_toys.php"><p class="center_text_index">ÎNAPOI</p></a>
         <?php
     }
+
     //delete_toy
     if(isset($_POST['delete_toy'])){
         if(!empty($_POST['product_id'])){
@@ -147,6 +150,7 @@ session_start();
         <a href="./admin_toys.php"><p class="center_text_index">ÎNAPOI</p></a>
         <?php
     }
+
     //add_new_toy
     if(isset($_POST['add_new_toy'])){
         if(!empty($_POST['product_id']) && !empty($_POST['product_name']) && !empty($_POST['age']) && !empty($_POST['material']) && !empty($_POST['color']) && !empty($_POST['price']) && !empty($_POST['description']) && !empty($_FILES['picture']) && $_POST['age']!=0){
@@ -192,7 +196,6 @@ session_start();
         <?php
     }
 
-
     //add_discount_boardgames
     if(isset($_POST['add_discount_boardgames'])){
         if(!empty($_POST['product_id']) && !empty($_POST['discount'])){
@@ -216,6 +219,7 @@ session_start();
         <a href="./admin_boardgames.php"><p class="center_text_index">ÎNAPOI</p></a>
         <?php
     }
+
     //update_boardgames
     if(isset($_POST['update_boardgames'])){
         if(!empty($_POST['product_id'])){

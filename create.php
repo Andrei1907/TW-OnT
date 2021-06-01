@@ -18,10 +18,17 @@ session_start();
         $password2 = $_POST['password2'];
 
 		//is there an account with this email already in our database?
-		$query = "select * from users where email = '$email' limit 1";
+		try{
+			$pdo = new PDO($dsn, $dbuser, $dbpass, $opt);
+			$statement = $pdo->prepare("select * from users where email = ? limit 1");
+			$statement->execute(array($_POST['email']));
+		}
+		catch(PDOException $e) {
+			echo "Eroare: " . $e->getMessage();
+			exit;
+		}
 
-		$queryResult = mysqli_query($con, $query);
-		if($queryResult && mysqli_num_rows($queryResult) > 0)
+		if($statement && $statement->rowCount() > 0)
 		{
 			$valid_entry = 4;
 		}
@@ -42,10 +49,17 @@ session_start();
         {
             $user_id = genRand(20);
 			$pass = md5($password1);
-            $query = "insert into users (user_id,f_name,l_name,email,password) values ('$user_id','$f_name','$l_name','$email','$pass')";
 
-            mysqli_query($con, $query);
-            
+			try{
+				$pdo = new PDO($dsn, $dbuser, $dbpass, $opt);
+				$statement = $pdo->prepare("insert into users (user_id,f_name,l_name,email,password) values (?,?,?,?,?)");
+				$statement->execute(array($user_id, $_POST['f_name'], $_POST['l_name'], $_POST['email'], $pass));
+			}
+			catch(PDOException $e) {
+				echo "Eroare: " . $e->getMessage();
+				exit;
+			}
+
             header("Location: login.php");
             die;
         }

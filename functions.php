@@ -76,7 +76,8 @@ function isAdmin($con)
     die;
 }
 
-function interogate_product_boardgames($rows_number,$offset,$order_by,$table,$con){
+function interogate_product_boardgames($rows_number,$offset,$order_by,$table,$con)
+{
     if($table === 1){
         if($order_by === 1){
             $query = "SELECT * FROM boardgames LIMIT $rows_number OFFSET $offset";   
@@ -88,7 +89,8 @@ function interogate_product_boardgames($rows_number,$offset,$order_by,$table,$co
     return NULL;
 }
 
-function set_6_products($rows_number,$offset,$order_by,$con){
+function set_6_products($rows_number,$offset,$order_by,$con)
+{
         if($offset >= 0){
             $products = interogate_product_boardgames(6,$offset,1,1,$con);
 		    $number_of_rows = mysqli_num_rows($products);
