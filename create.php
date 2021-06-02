@@ -71,6 +71,8 @@ session_start();
 
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="ro">
   <head>
@@ -117,8 +119,6 @@ session_start();
 					<?php elseif($valid_entry == 2) : ?>
 						<p style="color: #e17a5f;">Introduceți o adresă de e-mail validă!</p>
 					<?php elseif($valid_entry == 3) : ?>
-
-					
 						<p style="color: #e17a5f;">Introduceți aceeași parolă de două ori!</p>
 					<?php endif;?>
 

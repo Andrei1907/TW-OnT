@@ -34,70 +34,68 @@ session_start();
 	<nav>
 		<ul>
 			<li class="nav_bar"><a href="../index.php">Acasă</a></li>
-			<li class="nav_bar"><a href="../cos.php">Coșul meu</a></li>
-			<li class="nav_bar"><a href="../jucarii.php">Jucării</a></li>
-			<li class="nav_bar"><a href="../boardgames.php">Boardgames</a></li>
-			<li class="nav_bar"><a href="../contact.php">Contact</a></li>
-
+			<li class="nav_bar"><a href="./adminpage.php">Administrare</a></li>
 		</ul>
 	</nav>
 	
 	<hr class="below">
 	
 	<main>
-	<div class="grid-container_adminpage"> 
-			
-			<div class="admin_left_top">
-				<div class="button_admin_toys">
-					<div class="container_image_text">
-						
-					<p>Modifică la categoria jucării</p>
-					<a href="admin_toys.php"><p class="center_text_index">JUCĂRII</p></a>
-					
-				</div>
-				</div>
-
-			</div>
-
-			<div class="admin_left_bottom">
-				<div class="button_admin_boardgames">
-				<div class="container_image_text">
-					
-					<p>Modifică la categoria boardgames</p>
-					<a href="admin_boardgames.php"><p class="center_text_index">BOARDGAMES</p></a>
-
-				</div>
-				</div>
-
-			</div>
-
-			<div class="admin_right_top">
-				<div class="button_admin_user">
-				<div class="container_image_text">
-					
-					<p>Configureaza utilizatori</p>
-					<a href="admin_users.php"><p class="center_text_index">USERI</p></a>
-
-				</div>
-				</div>
-
-			</div>
-
-			<div class="admin_right_bottom">
-				<div class="button_admin_statistics">
-				<div class="container_image_text">
-
-					<p>Vezi statistici</p>
-					<a href="admin_statistics.php"><p class="center_text_index">STATISTICI</p></a>
+		<div class="grid-container-contact"> 
+			<div class="center_item">
+				<h2>Statistici - vizualizare/export</h2>
 				
-				</div>
+				<div class="middletext">
+					Pentru categoria și formatul dorit, selectați opțiunea: vizualizare sau export propriu-zis al clasamentului produselor noastre.
+				</div><br>
+
+				<div class="below">
+
+				<h3>Jucării</h3>
+				<div class="middletext">
+					<p>CSV:</p>
+					<form method="post" action="export.php">
+						<input type="submit" name="view-csvt" value="Vizualizează">
+						|
+						<input type="submit" name="download-csvt" value="Descarcă">
+					</form>
+					<p>WebP:</p>
+					<form method="post" action="export.php">
+						<input type="submit" name="view-webpt" value="Vizualizează">
+						|
+						<input type="submit" name="download-webpt" value="Descarcă">
+					</form>
+					<p>PDF:</p>
+					<form method="post" action="export.php">
+						<input type="submit" name="view-pdft" value="Vizualizează">
+						|
+						<input type="submit" name="download-pdft" value="Descarcă">
+					</form>
 				</div>
 
+				<h3>Boardgames</h3>
+				<div class="middletext">
+					<p>CSV:</p>
+					<form method="post" action="export.php">
+						<input type="submit" name="view-csvb" value="Vizualizează">
+						|
+						<input type="submit" name="download-csvb" value="Descarcă">
+					</form>
+					<p>WebP:</p>
+					<form method="post" action="export.php">
+						<input type="submit" name="view-webpb" value="Vizualizează">
+						|
+						<input type="submit" name="download-webpb" value="Descarcă">
+					</form>
+					<p>PDF:</p>
+					<form method="post" action="export.php">
+						<input type="submit" name="view-pdfb" value="Vizualizează">
+						|
+						<input type="submit" name="download-pdfb" value="Descarcă">
+					</form>
+					<br>
+				</div>
 			</div>
-			
-
-			
-			
 		</div>
 	</main>
 
