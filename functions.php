@@ -76,6 +76,69 @@ function isAdmin($con)
     die;
 }
 
+function getMostPopular($con)
+{
+    $query = "select * from boardgames order by counter desc limit 1";
+    $queryResult = mysqli_query($con, $query);
+
+    $product_data = mysqli_fetch_assoc($queryResult);
+    $boardgame = $product_data;
+    $max = $product_data['counter'];
+
+    $query = "select * from toys order by counter desc limit 1";
+    $queryResult = mysqli_query($con, $query);
+
+    $product_data = mysqli_fetch_assoc($queryResult);
+    if($product_data['counter'] > $max)
+    {
+        return $product_data;
+    }
+    else {
+        return $boardgame;
+    }
+
+}
+
+function getRanking($con)
+{
+    $query = "select * from boardgames order by counter desc limit 5";
+    $queryResult = mysqli_query($con, $query);
+
+    if($product1 = mysqli_fetch_assoc($queryResult)){
+    }
+    else $product1=NULL;
+
+    if($product2 = mysqli_fetch_assoc($queryResult)){
+    }
+    else $product2=NULL;
+
+    if($product3 = mysqli_fetch_assoc($queryResult)){
+    }
+    else $product3=NULL;
+
+    if($product4 = mysqli_fetch_assoc($queryResult)){
+    }
+    else $product4=NULL;
+
+    if($product5 = mysqli_fetch_assoc($queryResult)){
+    }
+    else $product5=NULL;
+
+    if($product6 = mysqli_fetch_assoc($queryResult)){
+    }
+    else $product6=NULL;
+
+    $product_array = array(
+        1=>$product1 ,
+        2=>$product2 ,
+        3=>$product3 ,
+        4=>$product4 ,
+        5=>$product5 ,
+        6=>$product6 ,
+    );
+    return $product_array;
+}
+
 function interogate_product_boardgames($rows_number,$offset,$order_by,$table,$con)
 {
     if($table === 1){

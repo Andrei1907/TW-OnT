@@ -5,12 +5,11 @@ session_start();
 	include("../functions.php");
 	$admin = isAdmin($con);
     if($admin != 1)
-    {            
+    {
 		header("Location: ../index.php");
         die;
-    }   
+    }
      
-
 ?>
 
 
@@ -53,45 +52,51 @@ session_start();
 
 				<h3>Jucării</h3>
 				<div class="middletext">
-					<p>CSV:</p>
 					<form method="post" action="export.php">
-						<input type="submit" name="view-csvt" value="Vizualizează">
-						|
+						<p>CSV:
 						<input type="submit" name="download-csvt" value="Descarcă">
+						</p>
 					</form>
-					<p>WebP:</p>
+					
 					<form method="post" action="export.php">
+						<p>WebP:
 						<input type="submit" name="view-webpt" value="Vizualizează">
 						|
 						<input type="submit" name="download-webpt" value="Descarcă">
+						</p>
 					</form>
-					<p>PDF:</p>
+					
 					<form method="post" action="export.php">
+						<p>PDF:
 						<input type="submit" name="view-pdft" value="Vizualizează">
 						|
 						<input type="submit" name="download-pdft" value="Descarcă">
+						</p>
 					</form>
 				</div>
 
 				<h3>Boardgames</h3>
 				<div class="middletext">
-					<p>CSV:</p>
 					<form method="post" action="export.php">
-						<input type="submit" name="view-csvb" value="Vizualizează">
-						|
+						<p>CSV:
 						<input type="submit" name="download-csvb" value="Descarcă">
+						</p>
 					</form>
-					<p>WebP:</p>
+					
 					<form method="post" action="export.php">
+						<p>WebP:
 						<input type="submit" name="view-webpb" value="Vizualizează">
 						|
 						<input type="submit" name="download-webpb" value="Descarcă">
+						</p>
 					</form>
-					<p>PDF:</p>
+					
 					<form method="post" action="export.php">
+						<p>PDF:
 						<input type="submit" name="view-pdfb" value="Vizualizează">
 						|
 						<input type="submit" name="download-pdfb" value="Descarcă">
+						</p>
 					</form>
 					<br>
 				</div>

@@ -51,48 +51,44 @@ session_start();
 				<div class="button_admin_toys">
 					<div class="container_image_text">
 						
-					<p>Modifică la categoria jucării</p>
-					<a href="admin_toys.php"><p class="center_text_index">JUCĂRII</p></a>
+						<p class="middletext">Modifică la categoria jucării</p>
+						<a href="admin_toys.php"><p class="center_text_index">JUCĂRII</p></a>
 					
+					</div>
 				</div>
-				</div>
-
 			</div>
 
 			<div class="admin_left_bottom">
-				<div class="button_admin_boardgames">
-				<div class="container_image_text">
-					
-					<p>Modifică la categoria boardgames</p>
-					<a href="admin_boardgames.php"><p class="center_text_index">BOARDGAMES</p></a>
+				<div class="button_admin_user">
+					<div class="container_image_text">
+						
+						<p class="middletext">Configurează utilizatori</p>
+						<a href="admin_users.php"><p class="center_text_index">USERI</p></a>
 
+					</div>
 				</div>
-				</div>
-
 			</div>
 
 			<div class="admin_right_top">
-				<div class="button_admin_user">
-				<div class="container_image_text">
-					
-					<p>Configureaza utilizatori</p>
-					<a href="admin_users.php"><p class="center_text_index">USERI</p></a>
+				<div class="button_admin_boardgames">
+					<div class="container_image_text">
+						
+						<p class="middletext">Modifică la categoria boardgames</p>
+						<a href="admin_boardgames.php"><p class="center_text_index">BOARDGAMES</p></a>
 
+					</div>
 				</div>
-				</div>
-
 			</div>
 
 			<div class="admin_right_bottom">
 				<div class="button_admin_statistics">
-				<div class="container_image_text">
+					<div class="container_image_text">
 
-					<p>Vezi statistici</p>
-					<a href="admin_statistics.php"><p class="center_text_index">STATISTICI</p></a>
-				
+						<p class="middletext">Vezi statistici</p>
+						<a href="admin_statistics.php"><p class="center_text_index">STATISTICI</p></a>
+					
+					</div>
 				</div>
-				</div>
-
 			</div>
 			
 

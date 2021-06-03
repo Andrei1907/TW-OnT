@@ -8,6 +8,8 @@ session_start();
 
     $user_data = isLoggedIn($con);
 
+	$popular = getMostPopular($con);
+
 	if($_SERVER['REQUEST_METHOD'] == "POST")
     {
         //something was posted
@@ -66,7 +68,7 @@ session_start();
 			<div class="left_item_top">
 				<h3>Articolul favorit</h3>
 				<div class="container_image_text">
-					<a href="item.php"><img src="Poze/index/carcassonne.jpg" alt="Item" class="item_pic"></a>
+					<a href="item.php"><img src="Poze/Products/<?php echo nvl($popular['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
 				</div>
 			</div>
 			
