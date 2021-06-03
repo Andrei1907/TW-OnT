@@ -4,7 +4,7 @@ session_start();
 	include("connection.php");
 	include("functions.php");
 	reset_page_numberB();
-
+	reset_selected_queryB();
 	$page_content = 1;
 	if(isset($_SESSION['$page_numberT']))
 	{

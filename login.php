@@ -19,12 +19,19 @@ session_start();
             //read from the database - does the user exist?
 			$pass = md5($password);
 
-            $query = "select * from users where email = '$email' limit 1";
+			try{
+				$pdo = new PDO($dsn, $dbuser, $dbpass, $opt);
+				$statement = $pdo->prepare("select * from users where email = ? limit 1");
+				$statement->execute(array($_POST['email']));
+			}
+			catch(PDOException $e) {
+				echo "Eroare: " . $e->getMessage();
+				exit;
+			}
 
-            $queryResult = mysqli_query($con, $query);
-            if($queryResult && mysqli_num_rows($queryResult) > 0)
+            if($statement && $statement->rowCount() > 0)
             {
-                $user_data = mysqli_fetch_assoc($queryResult);
+                $user_data = $statement->fetch();
                 if($user_data['password'] === $pass)
                 {
                     $_SESSION['user_id'] = $user_data['user_id'];
@@ -52,7 +59,7 @@ session_start();
 					$valid_entry = 1;
 				}
             }
-			else if(mysqli_num_rows($queryResult) == 0)
+			else if($statement->rowCount() == 0)
 			{
 				$valid_entry = 1;
 			}

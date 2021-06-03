@@ -51,17 +51,16 @@ session_start();
 				<h3>Articolul favorit</h3>
 				<div class="container_image_text">
 					<a href="item.php"><img src="Poze/index/carcassonne.jpg" alt="Item" class="item_pic"></a>
-					<a href="#"><p class="button_right">Adaugă în coș</p></a>
 				</div>
 			</div>
 			
 			<div class="left_item_bottom">
 				<h3>Abonează-te!</h3>
 				<p class="middletext">Introdu-ți adresa de e-mail aici pentru newsletter:</p>
-				<form>
+				<form method="post">
 					<input type="text" id="email" name="email" size="25"><br>
 					
-					<input type="submit" value="Trimite" class="send-bttn">
+					<input type="submit" name="newsletter" value="Trimite" class="send-bttn" onclick="addNewsletter($con)">
 				</form>
 			</div>
 		
