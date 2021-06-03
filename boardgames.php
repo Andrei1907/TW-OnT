@@ -3,34 +3,45 @@ session_start();
 	$_SESSION;
 	include("connection.php");
 	include("functions.php");
-	//session page_number va fi reinitializat de fiecare data cand dam submit la filter, 
-	//si acolo se va initializa si variabila session query_boardgames
-	if(isset($_SESSION['$page_number']))
+	reset_page_numberT();
+
+	$page_content = 1;
+	if(isset($_SESSION['$page_numberB']))
 	{
-		$page_number = $_SESSION['$page_number'];
+		$page_number = $_SESSION['$page_numberB'];
 	}
 	else{
-		echo "Initializat cu 1! <br>";
 		$page_number = 1;
 	}
-
-	$product_array = set_6_products(6,($page_number-1)*6,1,$con);
-	
+	if(!isset($_SESSION['$selected_queryB']))
+	{
+		$_SESSION['$selected_queryB'] = 1;
+	}
+	if(1){
+		reset_page_numberB();
+		$selected_query = make_query(1);
+		if($selected_query != NULL)
+			$_SESSION['$selected_queryB'] = $selected_query;
+		$product_array = set_6_products(6,($page_number-1)*6,1,1,$con, $_SESSION['$selected_queryB']);
+	}
 	if(isset($_POST['previous_button'])){
 		$page_number = $page_number - 1;
 		if($page_number <= 0)
 			$page_number = 1;
-		$product_array = set_6_products(6,($page_number-1)*6,1,$con);
-		$_SESSION['$page_number'] = $page_number;
+		$product_array = set_6_products(6,($page_number-1)*6,1,1,$con,$_SESSION['$selected_queryB']);
+		$_SESSION['$page_numberB'] = $page_number;
 	}
 	if(isset($_POST['next_button'])){
 		$page_number = $page_number + 1;
-		$product_array = set_6_products(6,($page_number-1)*6,1,$con);
+		$product_array = set_6_products(6,($page_number-1)*6,1,1,$con,$_SESSION['$selected_queryB']);
 		if($product_array == NULL)
 			$page_number = $page_number - 1;
-		$product_array = set_6_products(6,($page_number-1)*6,1,$con);
-		$_SESSION['$page_number'] = $page_number;
+		$product_array = set_6_products(6,($page_number-1)*6,1,1,$con,$_SESSION['$selected_queryB']);
+		$_SESSION['$page_numberB'] = $page_number;
 	}
+	if($product_array == NULL)
+		$page_content=0;
+
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +53,7 @@ session_start();
     <title>OnT - Boardgames</title>
 	<link rel="stylesheet" href="style.css">
   </head>
-  
+
   <body>
 	<header>
 		<h1>Online Toys</h1>
@@ -67,23 +78,27 @@ session_start();
 		<div class="grid-container_produse"> 
 			
 			<div class="search">
-				<h2><!--<a href="" class="search_button">-->Opțiuni<!--</a>--></h2>
+				<h2>Opțiuni</h2>
+				
 				<div class="scroll_checkbox">
+				<td id = filter><form name="filter" method="POST" enctype="multipart/form-data">
 					<p class="middletext">Vârstă</p>
 					<div class="checkbox_block">
-						<input type="checkbox" id="age_3_10" name="age_3_10" value="value">
-						<label for="age_3_10">între 3 și 10 ani</label><br>
-						<input type="checkbox" id="age_10_18" name="age_10_18" value="value">
-						<label for="age_10_18">între 10 și 18 ani</label><br>
-						<input type="checkbox" id="age_over18" name="age_over18" value="value">
-						<label for="age_over18">peste 18 ani</label><br>
+						<input type="checkbox" id="age6" name="age6">
+						<label for="age6">peste 6 ani</label><br>
+						<input type="checkbox" id="age10" name="age10">
+						<label for="age10">peste 10 ani</label><br>
+						<input type="checkbox" id="age14" name="age14">
+						<label for="age14">peste 14 ani</label><br>
+						<input type="checkbox" id="age18" name="age18">
+						<label for="age18">peste 18 ani</label><br>
 					</div>
 					<p class="middletext">Tip</p>
 					<div class="checkbox_block">
 						<input type="checkbox" id="gen_strategy" name="gen_strategy" value="value">
 						<label for="gen_strategy">strategie</label><br>
-						<input type="checkbox" id="gen_noroc" name="gen_noroc" value="value">
-						<label for="gen_noroc">noroc</label><br>
+						<input type="checkbox" id="gen_luck" name="gen_luck" value="value">
+						<label for="gen_luck">noroc</label><br>
 						<input type="checkbox" id="gen_coop" name="gen_coop" value="value">
 						<label for="gen_coop">cooperare</label><br>
 						<input type="checkbox" id="gen_cards" name="gen_cards" value="value">
@@ -101,11 +116,11 @@ session_start();
 						<label for="number_players_6">2-6 jucători</label><br>
 						<input type="checkbox" id="number_players_10" name="number_players_10" value="value">
 						<label for="number_players_10">2-10 jucători</label><br>
-						<input type="checkbox" id="number_players_12" name="number_players_12" value="value">
-						<label for="number_players_12">4-12 jucători</label><br>
 					</div>
-					<input type="submit" value="Filtrează" class="send-bttn">
+					<input type="submit" class="send-bttn">
+				</form></td>
 				</div>
+			
 			</div>		
 			
 			<div class="lista_produse">
@@ -114,7 +129,8 @@ session_start();
 					<div class="mini_produs" >
 
 						<div class="container_image_text">
-							<?php if($product_array[1]) :?>
+							<?php if($page_content != 1) : 
+								  elseif($product_array[1]!=0) :?>
 							<a href="item.html"><img src="Poze/Products/<?php echo nvl($product_array[1]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
 							<p class="button_left"><?php echo $product_array[1]['price']*((100-$product_array[1]['discount'])/100); ?> RON</p>
 							<a href="#"><p class="button_right">Adaugă în coș</p></a>
@@ -128,7 +144,8 @@ session_start();
 					<div class="mini_produs" >
 	
 						<div class="container_image_text">
-							<?php if($product_array[2]) :?>
+							<?php if($page_content != 1) : 
+								  elseif($product_array[2]!=0) :?>
 							<a href="item.html"><img src="Poze/Products/<?php echo nvl($product_array[2]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
 							<p class="button_left"><?php echo $product_array[2]['price']*((100-$product_array[2]['discount'])/100); ?> RON</p>
 							<a href="#"><p class="button_right">Adaugă în coș</p></a>
@@ -142,7 +159,8 @@ session_start();
 					<div class="mini_produs" >
 						
 						<div class="container_image_text">
-							<?php if($product_array[3]) :?>
+							<?php if($page_content != 1) : 
+								  elseif($product_array[3]!=0) :?>
 							<a href="item.html"><img src="Poze/Products/<?php echo nvl($product_array[3]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
 							<p class="button_left"><?php echo $product_array[3]['price']*((100-$product_array[3]['discount'])/100); ?> RON</p>
 							<a href="#"><p class="button_right">Adaugă în coș</p></a>
@@ -155,8 +173,9 @@ session_start();
 				<div class="produs4">
 					<div class="mini_produs" >
 						
-						<div class="container_image_text">
-							<?php if($product_array[4]) :?>
+						<div id="product" class="container_image_text">
+							<?php if($page_content != 1) : 
+								  elseif($product_array[4]!=0) :?>
 							<a href="item.html"><img src="Poze/Products/<?php echo nvl($product_array[4]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
 							<p class="button_left"><?php echo $product_array[4]['price']*((100-$product_array[4]['discount'])/100); ?> RON</p>
 							<a href="#"><p class="button_right">Adaugă în coș</p></a>
@@ -170,7 +189,8 @@ session_start();
 					<div class="mini_produs" >
 
 						<div class="container_image_text">
-							<?php if($product_array[5]) :?>
+							<?php if($page_content != 1) : 
+								  elseif($product_array[5]!=0) :?>
 							<a href="item.html"><img src="Poze/Products/<?php echo nvl($product_array[5]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
 							<p class="button_left"><?php echo $product_array[5]['price']*((100-$product_array[5]['discount'])/100); ?> RON</p>
 							<a href="#"><p class="button_right">Adaugă în coș</p></a>
@@ -184,7 +204,8 @@ session_start();
 					<div class="mini_produs" >
 					
 						<div class="container_image_text">
-							<?php if($product_array[6]) :?>
+							<?php if($page_content != 1) : 
+								  elseif($product_array[6]!=0) :?>
 							<a href="item.html"><img src="Poze/Products/<?php echo nvl($product_array[6]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
 							<p class="button_left"><?php echo $product_array[6]['price']*((100-$product_array[6]['discount'])/100); ?> RON</p>
 							<a href="#"><p class="button_right">Adaugă în coș</p></a>

@@ -8,6 +8,10 @@ session_start();
 
     $user_data = isLoggedIn($con);
 
+	reset_page_numberB();
+	reset_page_numberT();
+	reset_selected_queryB();
+	reset_selected_queryT();
 ?>
 
 <!DOCTYPE html>
