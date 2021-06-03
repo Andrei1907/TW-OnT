@@ -1,3 +1,48 @@
+<?php
+session_start();
+	$_SESSION;
+	include("connection.php");
+	include("functions.php");
+	reset_page_numberB();
+	reset_selected_queryB();
+	$page_content = 1;
+	if(isset($_SESSION['$page_numberT']))
+	{
+		$page_number = $_SESSION['$page_numberT'];
+	}
+	else{
+		$page_number = 1;
+	}
+	if(!isset($_SESSION['$selected_queryT']))
+	{
+		$_SESSION['$selected_queryT'] = 1;
+	}
+	if(1){
+		reset_page_numberT();
+		$selected_query = make_query(2);
+		if($selected_query != NULL)
+			$_SESSION['$selected_queryT'] = $selected_query;
+		$product_array = set_6_products(6,($page_number-1)*6,2,1,$con, $_SESSION['$selected_queryT']);
+	}
+	if(isset($_POST['previous_button'])){
+		$page_number = $page_number - 1;
+		if($page_number <= 0)
+			$page_number = 1;
+		$product_array = set_6_products(6,($page_number-1)*6,2,1,$con, $_SESSION['$selected_queryT']);
+		$_SESSION['$page_numberT'] = $page_number;
+	}
+	if(isset($_POST['next_button'])){
+		$page_number = $page_number + 1;
+		$product_array = set_6_products(6,($page_number-1)*6,2,1,$con, $_SESSION['$selected_queryT']);
+		if($product_array == NULL)
+			$page_number = $page_number - 1;
+		$product_array = set_6_products(6,($page_number-1)*6,2,1,$con, $_SESSION['$selected_queryT']);
+		$_SESSION['$page_numberT'] = $page_number;
+	}
+	if($product_array == NULL)
+		$page_content=0;
+
+?>
 <!DOCTYPE html>
 <html lang="ro">
   <head>
@@ -32,8 +77,9 @@
 		<div class="grid-container_produse"> 
 			
 			<div class="search">
-				<h2><!--<a href="" class="search_button">-->Opțiuni<!--</a>--></h2>
+				<h2>Opțiuni</h2>
 				<div class="scroll_checkbox">
+				<td id = filter><form name="filter" method="POST" enctype="multipart/form-data">
 					<p class="middletext">Categorie de vârstă</p>
 					<div class="checkbox_block">
 						<input type="checkbox" id="age_small" name="age_small" value="value">
@@ -70,66 +116,82 @@
 						<label for="cul_portocaliu">portocaliu</label><br>
 					</div>
 					<input type="submit" value="Filtrează" class="send-bttn">
+					</form></td>
 				</div>
 			</div>		
 			<div class="lista_produse">
 			
 				<div class="produs1">
 					<div class="mini_produs" >
-					
+
 						<div class="container_image_text">
-							<a href="item.html"><img src="Poze/index/carcassonne.jpg" alt="Item" class="item_pic"></a>
-							<p class="button_left">150,00 RON</p>
+							<?php if($page_content != 1) : 
+								  elseif($product_array[1]!=0) :?>
+							<a href="item.html"><img src="Poze/Products/<?php echo nvl($product_array[1]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+							<p class="button_left"><?php echo $product_array[1]['price']*((100-$product_array[1]['discount'])/100); ?> RON</p>
 							<a href="#"><p class="button_right">Adaugă în coș</p></a>
-							<a href="item.html"><p class="middletext">Carcassonne</p></a>
+							<a href="item.html"><p class="middletext"><?php echo $product_array[1]['product_name']; ?></p></a>
+							<?php endif;?>
 						</div>
 						
 					</div>
 				</div>
 				<div class="produs2">
 					<div class="mini_produs" >
-					
+	
 						<div class="container_image_text">
-							<a href="item.html"><img src="Poze/index/carcassonne.jpg" alt="Item" class="item_pic"></a>
-							<p class="button_left">150,00 RON</p>
+							<?php if($page_content != 1) : 
+								  elseif($product_array[2]!=0) :?>
+							<a href="item.html"><img src="Poze/Products/<?php echo nvl($product_array[2]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+							<p class="button_left"><?php echo $product_array[2]['price']*((100-$product_array[2]['discount'])/100); ?> RON</p>
 							<a href="#"><p class="button_right">Adaugă în coș</p></a>
-							<a href="item.html"><p class="middletext">Carcassonne</p></a>
+							<a href="item.html"><p class="middletext"><?php echo $product_array[2]['product_name']; ?></p></a>
+							<?php endif;?>
 						</div>
 					
 					</div>
 				</div>
 				<div class="produs3">
 					<div class="mini_produs" >
-					
+						
 						<div class="container_image_text">
-							<a href="item.html"><img src="Poze/index/carcassonne.jpg" alt="Item" class="item_pic"></a>
-							<p class="button_left">150,00 RON</p>
+							<?php if($page_content != 1) : 
+								  elseif($product_array[3]!=0) :?>
+							<a href="item.html"><img src="Poze/Products/<?php echo nvl($product_array[3]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+							<p class="button_left"><?php echo $product_array[3]['price']*((100-$product_array[3]['discount'])/100); ?> RON</p>
 							<a href="#"><p class="button_right">Adaugă în coș</p></a>
-							<a href="item.html"><p class="middletext">Carcassonne</p></a>
+							<a href="item.html"><p class="middletext"><?php echo $product_array[3]['product_name']; ?></p></a>
+							<?php endif;?>
 						</div>
 					
 					</div>
 				</div>
 				<div class="produs4">
 					<div class="mini_produs" >
-					
-						<div class="container_image_text">
-							<a href="item.html"><img src="Poze/index/carcassonne.jpg" alt="Item" class="item_pic"></a>
-							<p class="button_left">150,00 RON</p>
+						
+						<div id="product" class="container_image_text">
+							<?php if($page_content != 1) : 
+								  elseif($product_array[4]!=0) :?>
+							<a href="item.html"><img src="Poze/Products/<?php echo nvl($product_array[4]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+							<p class="button_left"><?php echo $product_array[4]['price']*((100-$product_array[4]['discount'])/100); ?> RON</p>
 							<a href="#"><p class="button_right">Adaugă în coș</p></a>
-							<a href="item.html"><p class="middletext">Carcassonne</p></a>
+							<a href="item.html"><p class="middletext"><?php echo $product_array[4]['product_name']; ?></p></a>
+							<?php endif;?>
 						</div>
 					
 					</div>
 				</div>
 				<div class="produs5">
 					<div class="mini_produs" >
-					
+
 						<div class="container_image_text">
-							<a href="item.html"><img src="Poze/index/carcassonne.jpg" alt="Item" class="item_pic"></a>
-							<p class="button_left">150,00 RON</p>
+							<?php if($page_content != 1) : 
+								  elseif($product_array[5]!=0) :?>
+							<a href="item.html"><img src="Poze/Products/<?php echo nvl($product_array[5]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+							<p class="button_left"><?php echo $product_array[5]['price']*((100-$product_array[5]['discount'])/100); ?> RON</p>
 							<a href="#"><p class="button_right">Adaugă în coș</p></a>
-							<a href="item.html"><p class="middletext">Carcassonne</p></a>
+							<a href="item.html"><p class="middletext"><?php echo $product_array[5]['product_name']; ?></p></a>
+							<?php endif;?>
 						</div>
 					
 					</div>
@@ -138,10 +200,13 @@
 					<div class="mini_produs" >
 					
 						<div class="container_image_text">
-							<a href="item.html"><img src="Poze/index/carcassonne.jpg" alt="Item" class="item_pic"></a>
-							<p class="button_left">150,00 RON</p>
+							<?php if($page_content != 1) : 
+								  elseif($product_array[6]!=0) :?>
+							<a href="item.html"><img src="Poze/Products/<?php echo nvl($product_array[6]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+							<p class="button_left"><?php echo $product_array[6]['price']*((100-$product_array[6]['discount'])/100); ?> RON</p>
 							<a href="#"><p class="button_right">Adaugă în coș</p></a>
-							<a href="item.html"><p class="middletext">Carcassonne</p></a>
+							<a href="item.html"><p class="middletext"><?php echo $product_array[6]['product_name']; ?></p></a>
+							<?php endif;?>
 						</div>
 					
 					</div>
@@ -150,10 +215,10 @@
 			</div>
 			
 			<div class="container_previous_button">
-				<div></div>
+				<div><td id = previous_button><form name="previous_button" method="POST" ><input type='hidden' name='previous_button' value='1' /><input type="submit" value="<"></form></td></div>
 			</div>
 			<div class="container_next_button">
-				<div></div>
+				<div><td id = next_button><form name="next_button" method="POST" ><input type='hidden' name='next_button' value='1' /><input type="submit" value=">"></form></td></div>
 			</div>
 			
 		</div>

@@ -30,6 +30,10 @@ session_start();
 			header("Location: ./index.php");
         }
     }
+	reset_page_numberB();
+	reset_page_numberT();
+	reset_selected_queryB();
+	reset_selected_queryT();
 ?>
 
 <!DOCTYPE html>
