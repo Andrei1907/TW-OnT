@@ -630,7 +630,7 @@ function set_6_products($rows_number,$offset,$table,$order_by,$con,$selected_que
 
 function nvl(&$var, $default)
 {
-    if ($var!=NULL) 
+    if ($var!=NULL AND $var!=0) 
         return $var;
     return $default;
 }
