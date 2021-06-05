@@ -1,3 +1,13 @@
+<?php
+session_start();
+	$_SESSION;
+	include("connection.php");
+	include("functions.php");
+
+	$ranking = getRanking($con);
+	
+?>
+
 <!DOCTYPE html>
 <html lang="ro">
   <head>
@@ -36,9 +46,9 @@
 				<div class="mini_produs">
 				
 				<div class="container_image_text">
-					<a href="item.html"><img src="Poze/index/carcassonne.jpg" alt="Item" class="item_pic"></a>
-					<a href="item.html"><p class="middletext" id="prod_name">Carcassonne</p></a>
-					<p class="button_left">150,00 RON</p>
+					<a href="item.html"><img src="Poze/Products/<?php echo nvl($ranking[1]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+					<a href="item.html"><p class="middletext"><?php echo $ranking[1]['product_name']; ?></p></a>
+					<p class="button_left"><?php echo $ranking[1]['price']*((100-$ranking[1]['discount'])/100); ?> RON</p>
 					<a href="#"><p class="button_right">Adaugă în coș</p></a>
 				</div>
 				
@@ -51,10 +61,10 @@
 					<div class="mini_produs" >
 					
 						<div class="container_image_text">
-							<a href="item.html"><img src="Poze/index/carcassonne.jpg" alt="Item" class="item_pic"></a>
-							<p class="button_left">150,00 RON</p>
-							<a href="#"><p class="button_right">Adaugă în coș</p></a>
-							<a href="item.html"><p class="middletext">Carcassonne</p></a>
+							<a href="item.html"><img src="Poze/Products/<?php echo nvl($ranking[2]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+							<a href="item.html"><p class="middletext"><?php echo $ranking[2]['product_name']; ?></p></a>
+							<p class="button_left"><?php echo $ranking[2]['price']*((100-$ranking[2]['discount'])/100); ?> RON</p>
+							<a href="#"><p class="button_right">Adaugă</p></a>
 						</div>
 						
 					</div>
@@ -64,10 +74,10 @@
 					<div class="mini_produs" >
 					
 						<div class="container_image_text">
-							<a href="item.html"><img src="Poze/index/carcassonne.jpg" alt="Item" class="item_pic"></a>
-							<p class="button_left">150,00 RON</p>
-							<a href="#"><p class="button_right">Adaugă în coș</p></a>
-							<a href="item.html"><p class="middletext">Carcassonne</p></a>
+							<a href="item.html"><img src="Poze/Products/<?php echo nvl($ranking[3]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+							<a href="item.html"><p class="middletext"><?php echo $ranking[3]['product_name']; ?></p></a>
+							<p class="button_left"><?php echo $ranking[3]['price']*((100-$ranking[3]['discount'])/100); ?> RON</p>
+							<a href="#"><p class="button_right">Adaugă</p></a>
 						</div>
 					
 					</div>
@@ -77,10 +87,10 @@
 					<div class="mini_produs" >
 					
 						<div class="container_image_text">
-							<a href="item.html"><img src="Poze/index/carcassonne.jpg" alt="Item" class="item_pic"></a>
-							<p class="button_left">150,00 RON</p>
-							<a href="#"><p class="button_right">Adaugă în coș</p></a>
-							<a href="item.html"><p class="middletext">Carcassonne</p></a>
+							<a href="item.html"><img src="Poze/Products/<?php echo nvl($ranking[4]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+							<a href="item.html"><p class="middletext"><?php echo $ranking[4]['product_name']; ?></p></a>
+							<p class="button_left"><?php echo $ranking[4]['price']*((100-$ranking[4]['discount'])/100); ?> RON</p>
+							<a href="#"><p class="button_right">Adaugă</p></a>
 						</div>
 					
 					</div>
@@ -90,10 +100,10 @@
 					<div class="mini_produs" >
 					
 						<div class="container_image_text">
-							<a href="item.html"><img src="Poze/index/carcassonne.jpg" alt="Item" class="item_pic"></a>
-							<p class="button_left">150,00 RON</p>
-							<a href="#"><p class="button_right">Adaugă în coș</p></a>
-							<a href="item.html"><p class="middletext">Carcassonne</p></a>
+							<a href="item.html"><img src="Poze/Products/<?php echo nvl($ranking[5]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+							<a href="item.html"><p class="middletext"><?php echo $ranking[5]['product_name']; ?></p></a>
+							<p class="button_left"><?php echo $ranking[5]['price']*((100-$ranking[5]['discount'])/100); ?> RON</p>
+							<a href="#"><p class="button_right">Adaugă</p></a>
 						</div>
 					
 					</div>

@@ -8,6 +8,28 @@ session_start();
 
     $user_data = isLoggedIn($con);
 
+	$popular = getMostPopular($con);
+
+	if($_SERVER['REQUEST_METHOD'] == "POST")
+    {
+        //something was posted
+        $email = $_POST['email'];
+
+		if(!empty($email) && strpbrk($email, '@') == TRUE)
+        {
+			try{
+				$pdo = new PDO($dsn, $dbuser, $dbpass, $opt);
+				$statement = $pdo->prepare("INSERT INTO newsletter (email) VALUES (?)");
+				$statement->execute(array($_POST['email']));
+			}
+			catch(PDOException $e) {
+				echo "Eroare: " . $e->getMessage();
+				exit;
+			}
+
+			header("Location: ./index.php");
+        }
+    }
 	reset_page_numberB();
 	reset_page_numberT();
 	reset_selected_queryB();
@@ -50,7 +72,7 @@ session_start();
 			<div class="left_item_top">
 				<h3>Articolul favorit</h3>
 				<div class="container_image_text">
-					<a href="item.php"><img src="Poze/index/carcassonne.jpg" alt="Item" class="item_pic"></a>
+					<a href="item.php"><img src="Poze/Products/<?php echo nvl($popular['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
 				</div>
 			</div>
 			
