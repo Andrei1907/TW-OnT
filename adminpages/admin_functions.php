@@ -326,9 +326,9 @@ session_start();
     }
     //add_new_boardgames
     if(isset($_POST['add_new_boardgames'])){
-        if(!empty($_POST['product_id']) && !empty($_POST['product_name']) && !empty($_POST['age']) && !empty($_POST['type']) && !empty($_POST['number_players']) && !empty($_POST['price']) && !empty($_POST['description']) && !empty($_FILES['picture']) && $_POST['age']!=0){
+        if(!empty($_POST['product_id_add']) && !empty($_POST['product_name']) && !empty($_POST['age']) && !empty($_POST['type']) && !empty($_POST['number_players']) && !empty($_POST['price']) && !empty($_POST['description']) && !empty($_FILES['picture']) && $_POST['age']!=0){
             
-            $product_id = $_POST['product_id'];
+            $product_id = $_POST['product_id_add'];
             $product_name = $_POST['product_name'];
             $age_value = $_POST['age'];
             $type = $_POST['type'];
@@ -416,4 +416,53 @@ session_start();
         }
     }
 
+    if(isset($_POST["query"]) && isset($_POST["table"]))
+    {
+        $product_list = '';
+
+        if($_POST["table"]==1)
+            $query = "SELECT product_id, product_name FROM boardgames WHERE product_id LIKE '%".$_POST["query"]."%'";
+        else 
+            $query = "SELECT product_id, product_name FROM toys WHERE product_id LIKE '%".$_POST["query"]."%'";
+        
+        $result = mysqli_query($con, $query);
+        $product_list = '<ul>';
+        if(mysqli_num_rows($result) > 0)
+        {
+            while($row = mysqli_fetch_array($result))
+            {
+                $product_list .= '<li>'.$row["product_id"].'-'.$row["product_name"].'</li>';
+            }
+        }
+        else
+        {
+            $product_list .= '<li>Produs negăsit</li>';
+        }
+        $product_list .= '</ul>';
+        echo $product_list;
+    }
+
+    if(isset($_POST["query_add"]) && isset($_POST["table"]))
+    {
+        $product_list = '';
+        
+        if($_POST["table"]==1)
+            $query = "SELECT product_id FROM boardgames WHERE product_id = '".$_POST["query_add"]."'";
+        else 
+            $query = "SELECT product_id FROM toys WHERE product_id = '".$_POST["query_add"]."'";
+        
+        $result = mysqli_query($con, $query);
+        $response='';
+        if(mysqli_num_rows($result) == 0)
+        {
+            $response .= 'ID valid';
+        }
+        else
+        {
+            $response .= 'ID-ul acesta exista deja!';
+        }
+        
+        echo $response;
+    }
+    
 ?>

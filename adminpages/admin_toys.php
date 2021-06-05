@@ -22,6 +22,7 @@ session_start();
 	<meta name="author2" content="Anton Sfabu">
     <title>OnT - Admin</title>
 	<link rel="stylesheet" href="../style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   
   <body>
@@ -75,6 +76,8 @@ session_start();
 
 						<label for="product_id">ID-ul produsului:</label>
 						<input type="text" id="product_id" name="product_id" class="data"><br>
+						<div id="product_list"> </div>
+
 						<label for="discount">Oferta (în %):</label>
 						<input type="text" id="discount" name="discount" class="data"><br>
 						<input type="submit" name="add_discount_toy" class="send-bttn">
@@ -87,6 +90,7 @@ session_start();
 						<form action="admin_functions.php" method="post" enctype="multipart/form-data">
 						<label for="product_id">ID-ul produsului:</label>
 						<input type="text" id="product_id" name="product_id" class="data"><br>
+						<div id="product_list"> </div>
 
 						<label for="product_name">Nume produs nou:</label>
 						<input type="text" id="product_name" name="product_name" class="data"><br>
@@ -125,6 +129,7 @@ session_start();
 
 						<label for="product_id">ID-ul produsului:</label>
 						<input type="text" id="product_id" name="product_id" class="data"><br>
+						<div id="product_list"> </div>
 
 						<input type="submit" name="delete_toy" class="send-bttn">
 					</form>
@@ -135,8 +140,9 @@ session_start();
 						<p>Adăugați produsul:</p>
 					 	<form action="admin_functions.php" method="post" enctype="multipart/form-data">
 							 
-						<label for="product_id">ID-ul produsului:</label>
-						<input type="text" id="product_id" name="product_id" class="data"><br>
+						<label for="product_id_add">ID-ul produsului:</label>
+						<input type="text" id="product_id_add" name="product_id_add" class="data">
+						<label for="product_id_add" id="response"></label><br>
 
 						<label for="product_name">Nume produs:</label>
 						<input type="text" id="product_name" name="product_name" class="data"><br>
@@ -180,3 +186,41 @@ session_start();
 	
   </body>
 </html>
+
+<script>
+$(document).ready(function(){
+    $('#product_id').keyup(function(){
+        var query = $(this).val();
+        if(query !='')
+        {
+            $.ajax({
+                url:"admin_functions.php",
+                method:"POST",
+                data:{query:query,table:2},
+                success:function(data)
+                {
+                    $('#product_list').fadeIn();
+                    $('#product_list').html(data);
+                }
+            })
+        }
+    })
+    ,
+    $('#product_id_add').keyup(function(){
+        var query_add = $(this).val();
+        if(query_add !='')
+        {
+            $.ajax({
+                url:"admin_functions.php",
+                method:"POST",
+                data:{query_add:query_add,table:2},
+                success:function(data)
+                {
+                    $('#response').fadeIn();
+                    $('#response').html(data);
+                }
+            })
+        }
+    })
+})
+</script>

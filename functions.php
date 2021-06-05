@@ -139,7 +139,6 @@ function getRanking($con)
     return $product_array;
 }
 
-function interogate_product_boardgames($rows_number,$offset,$order_by,$table,$con)
 function make_query($table)
 {
     $fill = 0;
