@@ -27,6 +27,7 @@ session_start();
 	
 	<nav>
 		<ul>
+			<li class="rss"><a href="./rss.xml"><img src="Poze/RSS_LOGO.png" width=1% height=1%></a></li>
 			<li class="nav_bar"><a href="./index.php">Acasă</a></li>
 			<li class="nav_bar"><a href="./cos.php">Coșul meu</a></li>
 			<li class="nav_bar"><a href="./jucarii.php">Jucării</a></li>
@@ -117,3 +118,33 @@ session_start();
 	
   </body>
 </html>
+<?php
+$str = "<?xml version='1.0' encoding='UTF-8' ?>" ;
+$str.= "<rss version='2.0'>";
+    $str.= "<channel>";
+    $str.="<title> Clasament RSS </title>" ;
+    $str.= "<description> Cloud RSS </description>" ;
+    $str.= "<language> ro </language>" ;
+    $str.= "<link>./clasament.php</link>" ;
+
+    $i=1;
+    foreach($ranking as $item)
+    {
+        if($i<6){
+
+        
+        $str.= "<item>";
+
+            $str.= "<title>".$item["product_name"]."</title>" ;
+            $str.= "<description>".$i.".".htmlspecialchars($item["description"]) ."</description>" ;
+            $str.= "<link>http://localhost/OnT/TW-OnT/clasament.php?product_id=".$item["product_id"]."</link>" ;
+
+
+        $str.= "</item>" ;
+        $i+=1;
+        }
+    }
+$str.= "</channel>";
+$str.= "</rss>";
+file_put_contents("rss.xml", $str);
+?>
