@@ -163,6 +163,7 @@ session_start();
             $price=$_POST['price'];
             $description=$_POST['description'];
             $file=$_FILES['picture'];
+
             switch($age_value){
                 case "1":
                     $age="Sugari";
@@ -336,6 +337,7 @@ session_start();
             $price = $_POST['price'];
             $description = $_POST['description'];
             $file=$_FILES['picture'];
+
             switch($age_value){
                 case "1":
                     $age="6+";
@@ -416,6 +418,61 @@ session_start();
         }
     }
 
+    //update user
+    if(isset($_POST['update_user'])){
+        if(!empty($_POST['id']))
+        {
+            $id = $_POST['id'];
+            $fill = 0;
+
+            $query = "UPDATE users SET ";
+            if(!empty($_POST['f_name'])){
+                $f_name = $_POST['f_name'];
+                $query .= "f_name = '$f_name' ";
+                $fill = 1;
+            }
+
+            if(!empty($_POST['l_name'])){
+                $l_name = $_POST['l_name'];
+                if($fill == 0)
+                {
+                    $query .= "l_name = '$l_name' ";
+                }
+                else $query .= ",l_name = '$l_name' ";
+                $fill = 1;
+            }
+
+            if(!empty($_POST['email'])){
+                $email = $_POST['email'];
+                if($fill == 0)
+                {
+                    $query .= "email = '$email' ";
+                }
+                else $query .= ",email = '$email' ";
+                $fill = 1;
+            }
+
+            $query .= "WHERE id = $id";
+            if($fill!=0){
+                $run = mysqli_query($con,$query) or die(mysqli_error($con));
+
+                if($run){
+                    echo "Date utilizator modificate cu succes!";
+                }
+                else
+                 echo "Nu s-a reușit efectuarea acțiunii! :(";
+            }
+            else 
+             echo "Completați măcar 1 spațiu, în afară de cel destinat ID-ului utilizatorului!";
+        }
+        else {
+            echo "Completați spațiul id";
+        }
+        ?>
+        <a href="./admin_boardgames.php"><p class="center_text_index">ÎNAPOI</p></a>
+        <?php
+    }
+
     if(isset($_POST["query"]) && isset($_POST["table"]))
     {
         $product_list = '';
@@ -464,5 +521,5 @@ session_start();
         
         echo $response;
     }
-    
+
 ?>

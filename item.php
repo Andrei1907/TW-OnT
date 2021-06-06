@@ -1,3 +1,19 @@
+<?php
+	session_start();
+
+	include("connection.php");
+	include("functions.php");
+
+	$table = $_GET['table'];
+	$product_id = $_GET['id'];
+
+	$query = "select * from $table where product_id='$product_id' limit 1";
+	$queryResult = mysqli_query($con, $query);
+
+	if($queryResult && mysqli_num_rows($queryResult) > 0)
+        $product_data = mysqli_fetch_assoc($queryResult);
+?>
+
 <!DOCTYPE html>
 <html lang="ro">
   <head>
@@ -33,21 +49,19 @@
 		
 			<div class="only_left_item">
 				<div class="container_image_text">
-					<img src="Poze/index/carcassonne.jpg" alt="Item" class="item_pic">
-					<p class="button_left">150,00 RON</p>
+				<img src="Poze/Products/<?php echo nvl($product_data['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic">
+					<p class="button_left"><?php echo $product_data['price']*((100-$product_data['discount'])/100); ?> RON</p>
 					<a href="#"><p class="button_right">Adaugă în coș</p></a>
 				</div>
 			</div>
 			
 			<div class="only_right_item">
-				<h2 id="prod_name">Carcassonne</h2>
+				<h2 id="prod_name"><?php echo $product_data['product_name']; ?></h2>
 				<hr class="between">
 				<div class="item_description">
-					<p class="middletext"><em>Carcassonne</em> este un joc de plasare a pieselor in care jucatorii trag si plaseaza o placa cu o bucata de peisaj sudic francez pe ea.
-					Piesa poate avea un oras, un drum, o manastire, o pasune sau o combinatie a acestora, si trebuie plasata in vecinatatea placilor care au fost deja jucate, astfel incat orasele sa fie conectate la orase, drumuri spre drumuri, etc.</p>
-					<p class="middletext">Dupa plasarea unei placi, jucatorul poate decide sa-si aseze unul din muncitori pe una dintre zonele de pe ea: in oras ca un cavaler, pe drum ca un hot, pe o manastire ca un calugar sau pe iarba ca un fermier.
-					Atunci cand acea zona este completa, acele puncte scoruri pentru proprietar.</p>
-					<p class="middletext">In timpul jocului de <em>Carcassonne</em>, jucatorii se confrunta cu decizii: "Merita sa-mi pun ultimul muncitor acolo?" sau "Ar trebui sa folosesc aceasta piesa pentru a-mi extinde orasul, sau ar trebui sa o plasez in locul oponentului meu, oferindu-i un timp greu sa-si finalizeze proiectul si sa castige puncte?"</p>
+					<div class="middletext">
+						<?php echo $product_data['description']; ?>
+					</div>
 				</div>
 			</div>
 			

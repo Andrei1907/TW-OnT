@@ -50,17 +50,15 @@ session_start();
 				<h2>Gestionare utilizatori</h2>
 				<div class="middletext">
 					
-				<form method="get"><p>Selectați acțiunea
-					<select name='admin_action' onchange='if(this.value != 0) { this.form.submit(); }'>
+					<form method="get"><p>Selectați acțiunea
+						<select name='admin_action' onchange='if(this.value != 0) { this.form.submit(); }'>
 
-						<option value='0'>Alege...</option>
-        				<option value='1'>Adaugă ofertă</option>
-         				<option value='2'>Actualizează produs</option>
-         				<option value='3'>Șterge produs</option>
-         				<option value='4'>Adaugă produs</option>
-				
-					</select></p></form>
+							<option value='0'>Alege...</option>
+							<option value='1'>Modifică date utilizator</option>
+							<option value='2'>Vizualizează notificări utilizatori</option>
 					
+						</select></p>
+					</form>
 
 				</div>
 				
@@ -73,105 +71,50 @@ session_start();
     				switch($value){
        				 case "1":
           			?>
-					  	<p>Adăugați oferta:</p>
-						<form action="admin_functions.php" method="post">
+					  	<p>Actualizați datele utilizatorului:</p>
+						<form action="admin_functions.php" method="post" enctype="multipart/form-data">
+						<label for="id">ID-ul utilizatorului:</label>
+						<input type="text" id="id" name="id" class="data"><br>
 
-						<label for="product_id">ID-ul produsului:</label>
-						<input type="text" id="product_id" name="product_id" class="data"><br>
-						<label for="discount">Oferta (în %):</label>
-						<input type="text" id="discount" name="discount" class="data"><br>
-						<input type="submit" name="add_discount_boardgames" class="send-bttn">
+						<label for="f_name">Prenume:</label>
+						<input type="text" id="f_name" name="f_name" class="data"><br>
+
+						<label for="l_name">Nume:</label>
+						<input type="text" id="l_name" name="l_name" class="data"><br>
+
+						<label for="email">Adresă de e-mail:</label>
+						<input type="text" id="email" name="email" class="data"><br>
+
+						<input type="submit" name="update_user" class="send-bttn">
 					</form>
 					<?php
        				 break;
         			 case "2":
-					?>
-						<p>Actualizați produsul:</p>
-						<form action="admin_functions.php" method="post" enctype="multipart/form-data">
-						<label for="product_id">ID-ul produsului:</label>
-						<input type="text" id="product_id" name="product_id" class="data"><br>
+						{
+							$query = "select * from contact";
+							$queryResult = mysqli_query($con, $query);
 
-						<label for="product_name">Nume produs nou:</label>
-						<input type="text" id="product_name" name="product_name" class="data"><br>
+							$num = 0;
 
-						<label for="age">Categoria de vârstă:</label>
-						<select name='age'>
-							<option value="0">Alege...</option>
-        					<option value="1">6+</option>
-         					<option value="2">10+</option>
-         					<option value="3">14+</option>
-         					<option value="4">18+</option>
-						</select><br>
-
-						<label for="type">Tipul:</label>
-						<input type="text" id="type" name="type" class="data"><br>
-
-						<label for="number_players">Numarul de jucători:</label>
-						<input type="text" id="number_players" name="number_players" class="data"><br>
-						
-						<label for="price">Prețul nou:</label>
-						<input type="text" id="price" name="price" class="data"><br>
-
-						<label for="description">Descriere nouă:</label>
-						<input type="text" id="description" name="description" class="data"><br>
-
-						<label for="picture">Poza nouă:</label>
-						<input type="file" id="picture" name="picture" class="data"><br>
-
-						<input type="submit" name="update_boardgames" class="send-bttn">
-					</form>
-					<?php
-       				 break;
-       				 case "3":
-       			    ?>
-					   	<p>Ștergeți produsul:</p>
-						<form action="admin_functions.php" method="post">
-
-						<label for="product_id">ID-ul produsului:</label>
-						<input type="text" id="product_id" name="product_id" class="data"><br>
-
-						<input type="submit" name="delete_boardgames" class="send-bttn">
-					</form>
-					<?php
-       				 break;
-       				 case "4":
-					?>
-						<p>Adăugați produsul:</p>
-					 	<form action="admin_functions.php" method="post" enctype="multipart/form-data">
-							 
-						<label for="product_id">ID-ul produsului:</label>
-						<input type="text" id="product_id" name="product_id" class="data"><br>
-
-						<label for="product_name">Nume produs:</label>
-						<input type="text" id="product_name" name="product_name" class="data"><br>
-						
-						<label for="age">Categoria de vârstă:</label>
-						<select name='age'>
-							<option value="0">Alege...</option>
-        					<option value="1">6+</option>
-         					<option value="2">10+</option>
-         					<option value="3">14+</option>
-         					<option value="4">18+</option>
-						</select><br>
-
-						<label for="type">Tipul:</label>
-						<input type="text" id="type" name="type" class="data"><br>
-
-						<label for="number_players">Numarul de jucători:</label>
-						<input type="text" id="number_players" name="number_players" class="data"><br>
-
-						<label for="price">Prețul:</label>
-						<input type="text" id="price" name="price" class="data"><br>
-
-						<label for="description">Descriere:</label>
-						<input type="text" id="description" name="description" class="data"><br>
-
-						<label for="picture">Selectați o imagine:</label>
-						<input type="file" id="picture" name="picture" class="data"><br>
-
-						<input type="submit" name="add_new_boardgames" class="send-bttn">
-					</form>  
-					<?php
+							echo("<ul>");
+							while($notif = mysqli_fetch_assoc($queryResult))
+							{
+								$num = $num + 1;
+								echo("<li>");
+								echo("<p><strong>Notificare</strong>: " . $notif['type'] . "</p>");
+								echo("<p>Date personale emițător:
+										<ul> <li> Nume: " . $notif['l_name'] . "</li>
+										<li> Prenume: " . $notif['f_name'] . "</li>
+										<li> Adresă e-mail: " . $notif['email'] . "</li></ul></p>");
+								echo("<p>&quot;" . $notif['text'] . "&quot;</p>");
+								?>
+								
+								<form method='post'><input type='submit' value='Răspunde' name='replyNotif' class='send-bttn'></form><br>
+								
+								<?php
+							}
+							echo("</ul>");
+						}
        				 break;
       				}} ?>
 				

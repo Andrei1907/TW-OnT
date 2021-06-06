@@ -3,9 +3,11 @@ session_start();
 	$_SESSION;
 	include("connection.php");
 	include("functions.php");
+
 	reset_page_numberT();
 	reset_selected_queryT();
 	$page_content = 1;
+
 	if(isset($_SESSION['$page_numberB']))
 	{
 		$page_number = $_SESSION['$page_numberB'];
@@ -102,7 +104,7 @@ session_start();
 						<input type="checkbox" id="gen_coop" name="gen_coop" value="value">
 						<label for="gen_coop">cooperare</label><br>
 						<input type="checkbox" id="gen_cards" name="gen_cards" value="value">
-						<label for="gen_cards">joc de carți</label><br>
+						<label for="gen_cards">joc de cărți</label><br>
 						<input type="checkbox" id="gen_war" name="gen_war" value="value">
 						<label for="gen_war">joc de război</label><br>
 					</div>
@@ -131,10 +133,10 @@ session_start();
 						<div class="container_image_text">
 							<?php if($page_content != 1) : 
 								  elseif($product_array[1]!=0) :?>
-							<a href="item.html"><img src="Poze/Products/<?php echo nvl($product_array[1]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+							<a href="./item.php?table=boardgames&id=<?php echo $product_array[1]['product_id']; ?>"><img src="Poze/Products/<?php echo nvl($product_array[1]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
 							<p class="button_left"><?php echo $product_array[1]['price']*((100-$product_array[1]['discount'])/100); ?> RON</p>
 							<a href="#"><p class="button_right">Adaugă în coș</p></a>
-							<a href="item.html"><p class="middletext"><?php echo $product_array[1]['product_name']; ?></p></a>
+							<a href="./item.php?table=boardgames&id=<?php echo $product_array[1]['product_id']; ?>"><p class="middletext"><?php echo $product_array[1]['product_name']; ?></p></a>
 							<?php endif;?>
 						</div>
 						
@@ -146,10 +148,10 @@ session_start();
 						<div class="container_image_text">
 							<?php if($page_content != 1) : 
 								  elseif($product_array[2]!=0) :?>
-							<a href="item.html"><img src="Poze/Products/<?php echo nvl($product_array[2]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+							<a href="./item.php?table=boardgames&id=<?php echo $product_array[2]['product_id']; ?>"><img src="Poze/Products/<?php echo nvl($product_array[2]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
 							<p class="button_left"><?php echo $product_array[2]['price']*((100-$product_array[2]['discount'])/100); ?> RON</p>
 							<a href="#"><p class="button_right">Adaugă în coș</p></a>
-							<a href="item.html"><p class="middletext"><?php echo $product_array[2]['product_name']; ?></p></a>
+							<a href="./item.php?table=boardgames&id=<?php echo $product_array[2]['product_id']; ?>"><p class="middletext"><?php echo $product_array[2]['product_name']; ?></p></a>
 							<?php endif;?>
 						</div>
 					
@@ -161,10 +163,10 @@ session_start();
 						<div class="container_image_text">
 							<?php if($page_content != 1) : 
 								  elseif($product_array[3]!=0) :?>
-							<a href="item.html"><img src="Poze/Products/<?php echo nvl($product_array[3]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+							<a href="./item.php?table=boardgames&id=<?php echo $product_array[3]['product_id']; ?>"><img src="Poze/Products/<?php echo nvl($product_array[3]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
 							<p class="button_left"><?php echo $product_array[3]['price']*((100-$product_array[3]['discount'])/100); ?> RON</p>
 							<a href="#"><p class="button_right">Adaugă în coș</p></a>
-							<a href="item.html"><p class="middletext"><?php echo $product_array[3]['product_name']; ?></p></a>
+							<a href="./item.php?table=boardgames&id=<?php echo $product_array[3]['product_id']; ?>"><p class="middletext"><?php echo $product_array[3]['product_name']; ?></p></a>
 							<?php endif;?>
 						</div>
 					
@@ -176,10 +178,10 @@ session_start();
 						<div id="product" class="container_image_text">
 							<?php if($page_content != 1) : 
 								  elseif($product_array[4]!=0) :?>
-							<a href="item.html"><img src="Poze/Products/<?php echo nvl($product_array[4]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+							<a href="./item.php?table=boardgames&id=<?php echo $product_array[4]['product_id']; ?>"><img src="Poze/Products/<?php echo nvl($product_array[4]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
 							<p class="button_left"><?php echo $product_array[4]['price']*((100-$product_array[4]['discount'])/100); ?> RON</p>
 							<a href="#"><p class="button_right">Adaugă în coș</p></a>
-							<a href="item.html"><p class="middletext"><?php echo $product_array[4]['product_name']; ?></p></a>
+							<a href="./item.php?table=boardgames&id=<?php echo $product_array[4]['product_id']; ?>"><p class="middletext"><?php echo $product_array[4]['product_name']; ?></p></a>
 							<?php endif;?>
 						</div>
 					
@@ -191,10 +193,10 @@ session_start();
 						<div class="container_image_text">
 							<?php if($page_content != 1) : 
 								  elseif($product_array[5]!=0) :?>
-							<a href="item.html"><img src="Poze/Products/<?php echo nvl($product_array[5]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+							<a href="./item.php?table=boardgames&id=<?php echo $product_array[5]['product_id']; ?>"><img src="Poze/Products/<?php echo nvl($product_array[5]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
 							<p class="button_left"><?php echo $product_array[5]['price']*((100-$product_array[5]['discount'])/100); ?> RON</p>
 							<a href="#"><p class="button_right">Adaugă în coș</p></a>
-							<a href="item.html"><p class="middletext"><?php echo $product_array[5]['product_name']; ?></p></a>
+							<a href="./item.php?table=boardgames&id=<?php echo $product_array[5]['product_id']; ?>"><p class="middletext"><?php echo $product_array[5]['product_name']; ?></p></a>
 							<?php endif;?>
 						</div>
 					
@@ -206,10 +208,10 @@ session_start();
 						<div class="container_image_text">
 							<?php if($page_content != 1) : 
 								  elseif($product_array[6]!=0) :?>
-							<a href="item.html"><img src="Poze/Products/<?php echo nvl($product_array[6]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+							<a href="./item.php?table=boardgames&id=<?php echo $product_array[6]['product_id']; ?>"><img src="Poze/Products/<?php echo nvl($product_array[6]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
 							<p class="button_left"><?php echo $product_array[6]['price']*((100-$product_array[6]['discount'])/100); ?> RON</p>
 							<a href="#"><p class="button_right">Adaugă în coș</p></a>
-							<a href="item.html"><p class="middletext"><?php echo $product_array[6]['product_name']; ?></p></a>
+							<a href="./item.php?table=boardgames&id=<?php echo $product_array[6]['product_id']; ?>"><p class="middletext"><?php echo $product_array[6]['product_name']; ?></p></a>
 							<?php endif;?>
 						</div>
 					
