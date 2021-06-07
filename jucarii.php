@@ -129,7 +129,7 @@ session_start();
 								  elseif($product_array[1]!=0) :?>
 							<a href="./item.php?table=toys&id=<?php echo $product_array[1]['product_id']; ?>"><img src="Poze/Products/<?php echo nvl($product_array[1]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
 							<p class="button_left"><?php echo $product_array[1]['price']*((100-$product_array[1]['discount'])/100); ?> RON</p>
-							<a href="#"><p class="button_right">Adaugă în coș</p></a>
+							<button type="submit" id="adaugare_cos1" class="button_right" value='1'>Adaugă în coș</button>
 							<a href="./item.php?table=toys&id=<?php echo $product_array[1]['product_id']; ?>"><p class="middletext"><?php echo $product_array[1]['product_name']; ?></p></a>
 							<?php endif;?>
 						</div>
@@ -144,7 +144,7 @@ session_start();
 								  elseif($product_array[2]!=0) :?>
 							<a href="./item.php?table=toys&id=<?php echo $product_array[2]['product_id']; ?>"><img src="Poze/Products/<?php echo nvl($product_array[2]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
 							<p class="button_left"><?php echo $product_array[2]['price']*((100-$product_array[2]['discount'])/100); ?> RON</p>
-							<a href="#"><p class="button_right">Adaugă în coș</p></a>
+							<button type="submit" id="adaugare_cos2" class="button_right" value='2'>Adaugă în coș</button>
 							<a href="./item.php?table=toys&id=<?php echo $product_array[2]['product_id']; ?>"><p class="middletext"><?php echo $product_array[2]['product_name']; ?></p></a>
 							<?php endif;?>
 						</div>
@@ -159,7 +159,7 @@ session_start();
 								  elseif($product_array[3]!=0) :?>
 							<a href="./item.php?table=toys&id=<?php echo $product_array[3]['product_id']; ?>"><img src="Poze/Products/<?php echo nvl($product_array[3]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
 							<p class="button_left"><?php echo $product_array[3]['price']*((100-$product_array[3]['discount'])/100); ?> RON</p>
-							<a href="#"><p class="button_right">Adaugă în coș</p></a>
+							<button type="submit" id="adaugare_cos3" class="button_right" value='3'>Adaugă în coș</button>
 							<a href="./item.php?table=toys&id=<?php echo $product_array[3]['product_id']; ?>"><p class="middletext"><?php echo $product_array[3]['product_name']; ?></p></a>
 							<?php endif;?>
 						</div>
@@ -174,7 +174,7 @@ session_start();
 								  elseif($product_array[4]!=0) :?>
 							<a href="./item.php?table=toys&id=<?php echo $product_array[4]['product_id']; ?>"><img src="Poze/Products/<?php echo nvl($product_array[4]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
 							<p class="button_left"><?php echo $product_array[4]['price']*((100-$product_array[4]['discount'])/100); ?> RON</p>
-							<a href="#"><p class="button_right">Adaugă în coș</p></a>
+							<button type="submit" id="adaugare_cos4" class="button_right" value='4'>Adaugă în coș</button>
 							<a href="./item.php?table=toys&id=<?php echo $product_array[4]['product_id']; ?>"><p class="middletext"><?php echo $product_array[4]['product_name']; ?></p></a>
 							<?php endif;?>
 						</div>
@@ -189,7 +189,7 @@ session_start();
 								  elseif($product_array[5]!=0) :?>
 							<a href="./item.php?table=toys&id=<?php echo $product_array[5]['product_id']; ?>"><img src="Poze/Products/<?php echo nvl($product_array[5]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
 							<p class="button_left"><?php echo $product_array[5]['price']*((100-$product_array[5]['discount'])/100); ?> RON</p>
-							<a href="#"><p class="button_right">Adaugă în coș</p></a>
+							<button type="submit" id="adaugare_cos5" class="button_right" value='5'>Adaugă în coș</button>
 							<a href="./item.php?table=toys&id=<?php echo $product_array[5]['product_id']; ?>"><p class="middletext"><?php echo $product_array[5]['product_name']; ?></p></a>
 							<?php endif;?>
 						</div>
@@ -204,7 +204,7 @@ session_start();
 								  elseif($product_array[6]!=0) :?>
 							<a href="./item.php?table=toys&id=<?php echo $product_array[6]['product_id']; ?>"><img src="Poze/Products/<?php echo nvl($product_array[6]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
 							<p class="button_left"><?php echo $product_array[6]['price']*((100-$product_array[6]['discount'])/100); ?> RON</p>
-							<a href="#"><p class="button_right">Adaugă în coș</p></a>
+							<button type="submit" id="adaugare_cos6" class="button_right" value='6'>Adaugă în coș</button>
 							<a href="./item.php?table=toys&id=<?php echo $product_array[6]['product_id']; ?>"><p class="middletext"><?php echo $product_array[6]['product_name']; ?></p></a>
 							<?php endif;?>
 						</div>
@@ -226,5 +226,34 @@ session_start();
 	<footer>
 	</footer>
 	
+
+	<script>
+        document.getElementById("adaugare_cos1").addEventListener('click', loadProduct);
+		document.getElementById("adaugare_cos2").addEventListener('click', loadProduct);
+		document.getElementById("adaugare_cos3").addEventListener('click', loadProduct);
+		document.getElementById("adaugare_cos4").addEventListener('click', loadProduct);
+		document.getElementById("adaugare_cos5").addEventListener('click', loadProduct);
+		document.getElementById("adaugare_cos6").addEventListener('click', loadProduct);
+		
+		function loadProduct(){
+
+			var product_number = (this).value;
+
+			var product1_id = <?php echo nvl($product_array[1]['product_id'],0)?>;
+			var product2_id = <?php echo nvl($product_array[2]['product_id'],0)?>;
+			var product3_id = <?php echo nvl($product_array[3]['product_id'],0)?>;
+			var product4_id = <?php echo nvl($product_array[4]['product_id'],0)?>;
+			var product5_id = <?php echo nvl($product_array[5]['product_id'],0)?>;
+			var product6_id = <?php echo nvl($product_array[6]['product_id'],0)?>;
+
+			var data = 'product1_id='+product1_id+'&product2_id='+product2_id+'&product3_id='+product3_id+'&product4_id='+product4_id+'&product5_id='+product5_id+'&product6_id='+product6_id+'&product_number='+product_number+'&product_table=2'; 
+			var xhr = new XMLHttpRequest();
+
+			xhr.open("POST", "ajax.php");
+			xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+			xhr.send(data);
+			console.log(data);
+		}
+    </script>
   </body>
 </html>

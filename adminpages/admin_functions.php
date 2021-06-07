@@ -199,7 +199,7 @@ session_start();
 
     //add_discount_boardgames
     if(isset($_POST['add_discount_boardgames'])){
-        if(!empty($_POST['product_id']) && !empty($_POST['discount'])){
+        if(!empty($_POST['product_id']) && (!empty($_POST['discount']) || $_POST['discount']==0)){
 
             $product_id=$_POST['product_id'];
             $discount=$_POST['discount'];

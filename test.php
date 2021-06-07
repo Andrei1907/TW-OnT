@@ -43,6 +43,21 @@ session_start();
 	if($product_array == NULL)
 		$page_content=0;
 
+	if(isset($_POST['increment'])){
+		$page_number = $page_number + $_POST['increment'];
+		//prea inapoi
+		if($page_number <= 0)
+			$page_number = 1;
+		$product_array = set_6_products(6,($page_number-1)*6,1,1,$con,$_SESSION['$selected_queryB']);
+		//prea inainte
+		if($product_array == NULL)
+		{
+			$page_number = $page_number - 1;
+			$product_array = set_6_products(6,($page_number-1)*6,1,1,$con,$_SESSION['$selected_queryB']);
+		}
+		$_SESSION['$page_numberB'] = $page_number;
+	}
+
 ?>
 
 <!DOCTYPE html>
@@ -220,11 +235,15 @@ session_start();
 			</div>
 			
 			<div class="container_previous_button">
-				<div><td id = previous_button><form name="previous_button" method="POST" ><input type='hidden' name='previous_button' value='1' /><input type="submit" value="<"></form></td></div>
+				
+				<button type="submit" id="previous_button1" class="" value='1'><</button>
 			</div>
 			<div class="container_next_button">
-				<div><td id = next_button><form name="next_button" method="POST" ><input type='hidden' name='next_button' value='1' /><input type="submit" value=">"></form></td></div>
+				
+				
+				<button type="submit" id="next_button1" class="button_right" value='2'>></button>
 			</div>
+
 			
 		</div>
 	</main>
@@ -238,7 +257,9 @@ session_start();
 		document.getElementById("adaugare_cos4").addEventListener('click', loadProduct);
 		document.getElementById("adaugare_cos5").addEventListener('click', loadProduct);
 		document.getElementById("adaugare_cos6").addEventListener('click', loadProduct);
-		
+		document.getElementById("next_button1").addEventListener('click', next_previous_Page);
+		document.getElementById("previous_button1").addEventListener('click', next_previous_Page);
+
 		function loadProduct(){
 
 			var product_number = (this).value;
@@ -257,6 +278,21 @@ session_start();
 			xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 			xhr.send(data);
 			console.log(data);
+		}
+
+		function next_previous_Page(){
+			var button_value = (this).value;
+			var increment = 0;
+			if(button_value == 2)
+				increment = 1;
+			else increment = -1;
+			var xhr = new XMLHttpRequest();
+			var data = 'increment='+increment;
+			xhr.open("POST", "test.php");
+			xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+			xhr.send(data);
+			console.log(data);
+
 		}
     </script>
 

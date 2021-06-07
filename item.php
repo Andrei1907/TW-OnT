@@ -3,7 +3,10 @@
 
 	include("connection.php");
 	include("functions.php");
-
+	reset_page_numberB();
+	reset_page_numberT();
+	reset_selected_queryB();
+	reset_selected_queryT();
 	$table = $_GET['table'];
 	$product_id = $_GET['id'];
 

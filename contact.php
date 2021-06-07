@@ -3,7 +3,10 @@ session_start();
 
     include("connection.php");
     include("functions.php");
-
+	reset_page_numberB();
+	reset_page_numberT();
+	reset_selected_queryB();
+	reset_selected_queryT();
 	$valid_entry = 0;
 
     if($_SERVER['REQUEST_METHOD'] == "POST")

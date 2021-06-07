@@ -15,6 +15,7 @@ function isLoggedIn($con)
             return $user_data;
         }
     }
+    return NULL;
 }
 
 function isLoggedInRedirect($con)
