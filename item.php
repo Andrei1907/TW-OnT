@@ -20,8 +20,8 @@
     <meta charset="utf-8">
 	<meta name="author1" content="Andrei Rosu">
 	<meta name="author2" content="Anton Sfabu">
-    <title>OnT - Item</title>
-	<link rel="stylesheet" href="style.css">
+    <title>OnT - <?php echo $product_data['product_name']; ?></title>
+	<link rel="stylesheet" href="./style.css">
   </head>
   
   <body>
@@ -57,6 +57,19 @@
 			
 			<div class="only_right_item">
 				<h2 id="prod_name"><?php echo $product_data['product_name']; ?></h2>
+				<hr class="between">
+					<div class="middletext">
+						<ul id="taglist">
+							<?php
+								$types = $product_data['type'];
+								$pieces = explode(",", $types);
+								foreach($pieces as $i)
+									echo "<li class='category1'>$i</li>";
+							?>
+							<li class="category2"><?php echo $product_data['age']; ?> ani</li>
+							<li class="category3"><?php echo $product_data['number_players']; ?> jucători</li>
+						</ul>
+					</div>
 				<hr class="between">
 				<div class="item_description">
 					<div class="middletext">
