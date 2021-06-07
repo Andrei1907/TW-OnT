@@ -228,6 +228,18 @@ main h3 {
 	padding-left: 5%;
 }
 
+.middlelink {
+	color: #424775;
+	font-family: 'Trebuchet MS';
+	font-size: 20px;
+	text-decoration-line: underline;
+  	text-decoration-style: dashed;
+}
+
+.middlelink:hover {
+	text-decoration: none;
+}
+
 .data {
 	border: none;
 	border-bottom: 3px solid #e17a5f;
@@ -245,6 +257,32 @@ main h3 {
 .send-bttn {
 	float: right;
 	margin: 15px 85px 10px 0px;
+}
+
+ul#taglist li {
+	display: inline;
+	font-size: 20px;
+	padding: 5px;
+	border-radius: 15px;
+	opacity: 0.8;
+}
+
+ul#taglist li:hover {
+	opacity: 1;
+}
+
+.category1 {
+	background-color: rgb(66,71,117);
+	color: #f4f1de;
+}
+
+.category2 {
+	background-color: #edb66e;
+}
+
+.category3 {
+	background-color: #e17a5f;
+	color: #f4f1de;
 }
 
 .item_description {

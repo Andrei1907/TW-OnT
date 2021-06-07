@@ -27,7 +27,6 @@ session_start();
 	
 	<nav>
 		<ul>
-			<li class="rss"><a href="./rss.xml"><img src="Poze/RSS_LOGO.png" width=1% height=1%></a></li>
 			<li class="nav_bar"><a href="./index.php">Acasă</a></li>
 			<li class="nav_bar"><a href="./cos.php">Coșul meu</a></li>
 			<li class="nav_bar"><a href="./jucarii.php">Jucării</a></li>
@@ -111,6 +110,16 @@ session_start();
 				</div>
 			</div>
 		</div>
+
+		<div class="grid-container-contact">
+			<div class="rss">
+				<div class="middletext">
+					<p>Flux de date disponibil în format RSS:
+					<a href="./rss.xml"><img src="Poze/RSS_LOGO.png" width=1% height=1%></a>
+					</p>
+				</div>
+			</div>
+		</div>
 	</main>
 	
 	<footer>
@@ -118,6 +127,7 @@ session_start();
 	
   </body>
 </html>
+
 <?php
 $str = "<?xml version='1.0' encoding='UTF-8' ?>" ;
 $str.= "<rss version='2.0'>";

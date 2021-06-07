@@ -3,6 +3,7 @@ session_start();
 
 	include("../connection.php");
 	include("../functions.php");
+	
 	$admin = isAdmin($con);
     if($admin != 1)
     {            
@@ -94,22 +95,19 @@ session_start();
 							$query = "select * from contact";
 							$queryResult = mysqli_query($con, $query);
 
-							$num = 0;
-
 							echo("<ul>");
 							while($notif = mysqli_fetch_assoc($queryResult))
 							{
-								$num = $num + 1;
 								echo("<li>");
 								echo("<p><strong>Notificare</strong>: " . $notif['type'] . "</p>");
 								echo("<p>Date personale emițător:
 										<ul> <li> Nume: " . $notif['l_name'] . "</li>
 										<li> Prenume: " . $notif['f_name'] . "</li>
 										<li> Adresă e-mail: " . $notif['email'] . "</li></ul></p>");
-								echo("<p>&quot;" . $notif['text'] . "&quot;</p>");
+								echo("<p>Text: &quot;" . $notif['text'] . "&quot;</p>");
 								?>
 								
-								<form method='post'><input type='submit' value='Răspunde' name='replyNotif' class='send-bttn'></form><br>
+								<a href="./request.php?id=<?php echo $notif['request_id']; ?>" class="middlelink">Răspunde</a><br>
 								
 								<?php
 							}
