@@ -135,8 +135,8 @@ $str.= "<rss version='2.0'>";
         
         $str.= "<item>";
 
-            $str.= "<title>".$item["product_name"]."</title>" ;
-            $str.= "<description>".$i.".".htmlspecialchars($item["description"]) ."</description>" ;
+            $str.= "<title>".$i.".".$item["product_name"]."</title>" ;
+            $str.= "<description>".htmlspecialchars($item["description"]) ."</description>" ;
             $str.= "<link>http://localhost/OnT/TW-OnT/clasament.php?product_id=".$item["product_id"]."</link>" ;
 
 
