@@ -4,7 +4,7 @@ session_start();
 	include("./connection.php");
 	include("./functions.php");
 
-    $user_data = isLoggedIn($con);
+    $user_data = isLoggedIn($con, 0);
     $logged = 1;
     if($user_data == NULL)
         $logged = 0;

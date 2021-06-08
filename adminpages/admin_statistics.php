@@ -45,7 +45,7 @@ session_start();
 				<h2>Statistici - vizualizare/export</h2>
 				
 				<div class="middletext">
-					Pentru categoria și formatul dorit, selectați opțiunea: vizualizare sau export propriu-zis al clasamentului produselor noastre.
+					<p>Pentru categoria și formatul dorit, selectați opțiunea: vizualizare sau export propriu-zis al clasamentului produselor noastre.</p>
 				</div><br>
 
 				<div class="below">
@@ -55,14 +55,6 @@ session_start();
 					<form method="post" action="export.php">
 						<p>CSV:
 						<input type="submit" name="download-csvt" value="Descarcă">
-						</p>
-					</form>
-					
-					<form method="post" action="export.php">
-						<p>WebP:
-						<input type="submit" name="view-webpt" value="Vizualizează">
-						|
-						<input type="submit" name="download-webpt" value="Descarcă">
 						</p>
 					</form>
 					
@@ -84,14 +76,6 @@ session_start();
 					</form>
 					
 					<form method="post" action="export.php">
-						<p>WebP:
-						<input type="submit" name="view-webpb" value="Vizualizează">
-						|
-						<input type="submit" name="download-webpb" value="Descarcă">
-						</p>
-					</form>
-					
-					<form method="post" action="export.php">
 						<p>PDF:
 						<input type="submit" name="view-pdfb" value="Vizualizează">
 						|
@@ -105,14 +89,6 @@ session_start();
 					<form method="post" action="export.php">
 						<p>CSV:
 						<input type="submit" name="download-csvu" value="Descarcă">
-						</p>
-					</form>
-					
-					<form method="post" action="export.php">
-						<p>WebP:
-						<input type="submit" name="view-webpu" value="Vizualizează">
-						|
-						<input type="submit" name="download-webpu" value="Descarcă">
 						</p>
 					</form>
 					

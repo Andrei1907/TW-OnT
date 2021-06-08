@@ -35,10 +35,7 @@ session_start();
 	<nav>
 		<ul>
 			<li class="nav_bar"><a href="../index.php">Acasă</a></li>
-			<li class="nav_bar"><a href="../cos.php">Coșul meu</a></li>
-			<li class="nav_bar"><a href="../jucarii.php">Jucării</a></li>
-			<li class="nav_bar"><a href="../boardgames.php">Boardgames</a></li>
-			<li class="nav_bar"><a href="../contact.php">Contact</a></li>
+			<li class="nav_bar"><a href="./adminpage.php">Administrare</a></li>
 
 		</ul>
 	</nav>

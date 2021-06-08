@@ -717,4 +717,9 @@ table, th, td {
 	top:0%;right:0%;bottom:0%;left:0%;
 }
 
-	
+#useCase {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}
