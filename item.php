@@ -63,14 +63,27 @@
 				<hr class="between">
 					<div class="middletext">
 						<ul id="taglist">
-							<?php
+							<?php if($table == 'boardgames') :
+
 								$types = $product_data['type'];
 								$pieces = explode(",", $types);
 								foreach($pieces as $i)
 									echo "<li class='category1'>$i</li>";
-							?>
-							<li class="category2"><?php echo $product_data['age']; ?> ani</li>
-							<li class="category3"><?php echo $product_data['number_players']; ?> jucători</li>
+								?>
+								<li class="category2"><?php echo $product_data['age']; ?> ani</li>
+								<li class="category3"><?php echo $product_data['number_players']; ?> jucători</li>
+							<?php else : ?>
+								
+								<li class="category1"><?php echo $product_data['age']; ?></li>
+								<?php 
+								$colors = $product_data['color'];
+								$pieces = explode(",", $colors);
+								foreach($pieces as $i)
+									echo "<li class='category2'>$i</li>";
+								?>
+								
+								<li class="category3"><?php echo $product_data['material']; ?></li>
+							<?php endif; ?>
 						</ul>
 					</div>
 				<hr class="between">

@@ -110,17 +110,19 @@ session_start();
 				<div class="middletext" style="margin-bottom:50px;">
 					<p>Nu durează mult. Vă rugăm să completați câmpurile următoare cu datele necesare.</p>
 
-					<?php if($valid_entry == 5) : ?>
-						<p style="color: #e17a5f;">Vă rugăm să completați toate câmpurile!</p>
-					<?php elseif($valid_entry == 4) : ?>
-						<p style="color: #e17a5f;">Există deja un cont asociat cu această adresă de e-mail!</p>
-					<?php elseif($valid_entry == 1) : ?>
-						<p style="color: #e17a5f;">Introduceți nume și prenume valide!</p>
-					<?php elseif($valid_entry == 2) : ?>
-						<p style="color: #e17a5f;">Introduceți o adresă de e-mail validă!</p>
-					<?php elseif($valid_entry == 3) : ?>
-						<p style="color: #e17a5f;">Introduceți aceeași parolă de două ori!</p>
-					<?php endif;?>
+					<div class="warning">
+						<?php if($valid_entry == 5) : ?>
+							<p>Vă rugăm să completați toate câmpurile!</p>
+						<?php elseif($valid_entry == 4) : ?>
+							<p>Există deja un cont asociat cu această adresă de e-mail!</p>
+						<?php elseif($valid_entry == 1) : ?>
+							<p>Introduceți nume și prenume valide!</p>
+						<?php elseif($valid_entry == 2) : ?>
+							<p>Introduceți o adresă de e-mail validă!</p>
+						<?php elseif($valid_entry == 3) : ?>
+							<p>Introduceți aceeași parolă de două ori!</p>
+						<?php endif;?>
+					</div>
 
 					<form method="post">
 						<label>Nume:</label>

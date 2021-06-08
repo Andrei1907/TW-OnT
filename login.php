@@ -107,11 +107,13 @@ session_start();
 			<div class="center_item">
 				<h2>Ești gata de cumpărături?</h2>
 				<div class="middletext_login">
-					<?php if($valid_entry == 2) : ?>
-						<p style="color: #e17a5f;">Vă rugăm să completați toate câmpurile!</p>
-					<?php elseif($valid_entry == 1) : ?>
-						<p style="color: #e17a5f;">Asocierea e-mail - parolă invalidă!</p>
-					<?php endif;?>
+					<div class="warning">
+						<?php if($valid_entry == 2) : ?>
+							<p>Vă rugăm să completați toate câmpurile!</p>
+						<?php elseif($valid_entry == 1) : ?>
+							<p>Asocierea e-mail - parolă invalidă!</p>
+						<?php endif;?>
+					</div>
 
 					<form method="post">
 						<label for="email">Adresă e-mail:</label>

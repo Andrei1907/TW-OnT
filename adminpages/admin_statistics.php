@@ -98,6 +98,31 @@ session_start();
 						<input type="submit" name="download-pdfb" value="Descarcă">
 						</p>
 					</form>
+				</div>
+
+				<h3>Utilizatori</h3>
+				<div class="middletext">
+					<form method="post" action="export.php">
+						<p>CSV:
+						<input type="submit" name="download-csvu" value="Descarcă">
+						</p>
+					</form>
+					
+					<form method="post" action="export.php">
+						<p>WebP:
+						<input type="submit" name="view-webpu" value="Vizualizează">
+						|
+						<input type="submit" name="download-webpu" value="Descarcă">
+						</p>
+					</form>
+					
+					<form method="post" action="export.php">
+						<p>PDF:
+						<input type="submit" name="view-pdfu" value="Vizualizează">
+						|
+						<input type="submit" name="download-pdfu" value="Descarcă">
+						</p>
+					</form>
 					<br>
 				</div>
 			</div>
