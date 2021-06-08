@@ -111,17 +111,17 @@ session_start();
 					<p>Nu durează mult. Vă rugăm să completați câmpurile următoare cu datele necesare.</p>
 
 					<div class="warning">
-						<?php if($valid_entry == 5) : ?>
-							<p>Vă rugăm să completați toate câmpurile!</p>
-						<?php elseif($valid_entry == 4) : ?>
-							<p>Există deja un cont asociat cu această adresă de e-mail!</p>
-						<?php elseif($valid_entry == 1) : ?>
-							<p>Introduceți nume și prenume valide!</p>
-						<?php elseif($valid_entry == 2) : ?>
-							<p>Introduceți o adresă de e-mail validă!</p>
-						<?php elseif($valid_entry == 3) : ?>
-							<p>Introduceți aceeași parolă de două ori!</p>
-						<?php endif;?>
+						<?php if($valid_entry == 5)
+							echo('<p>Vă rugăm să completați toate câmpurile!</p>');
+						elseif($valid_entry == 4)
+							echo('<p>Există deja un cont asociat cu această adresă de e-mail!</p>');
+						elseif($valid_entry == 1)
+							echo('<p>Introduceți nume și prenume valide!</p>');
+						elseif($valid_entry == 2)
+							echo('<p>Introduceți o adresă de e-mail validă!</p>');
+						elseif($valid_entry == 3)
+							echo('<p>Introduceți aceeași parolă de două ori!</p>');
+						?>
 					</div>
 
 					<form method="post">

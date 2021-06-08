@@ -6,7 +6,7 @@ session_start();
     include("connection.php");
     include("functions.php");
 
-    $user_data = isLoggedInRedirect($con);
+    $user_data = isLoggedIn($con, 1);
 	reset_page_numberB();
 	reset_page_numberT();
 	reset_selected_queryB();

@@ -6,7 +6,7 @@ session_start();
     include("connection.php");
     include("functions.php");
 
-    $user_data = isLoggedIn($con);
+    $user_data = isLoggedIn($con, 0);
 
 	$popular = getMostPopular($con);
 
@@ -40,8 +40,10 @@ session_start();
 <html lang="ro">
   <head>
     <meta charset="utf-8">
+	<meta name="description" content="Magazin online de jucării și jocuri de societate, cu clasamente actualizate constant pentru surprinderea preferințelor actuale!">
 	<meta name="author1" content="Andrei Rosu">
 	<meta name="author2" content="Anton Sfabu">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OnT - Acasă</title>
 	<link rel="stylesheet" href="style.css">
   </head>
@@ -80,7 +82,7 @@ session_start();
 				<h3>Abonează-te!</h3>
 				<p class="middletext">Introdu-ți adresa de e-mail aici pentru newsletter:</p>
 				<form method="post">
-					<input type="text" id="email" name="email" size="25"><br>
+					<input type="text" id="email" name="email" size="25" placeholder="adresa dvs. de e-mail"><br>
 					
 					<input type="submit" name="newsletter" value="Trimite" class="send-bttn" onclick="addNewsletter($con)">
 				</form>

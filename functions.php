@@ -1,6 +1,6 @@
 <?php
 
-function isLoggedIn($con)
+function isLoggedIn($con, $redirect) //sunt logat? redirectare daca e necesar
 {
     if(isset($_SESSION['user_id']))
     {
@@ -14,32 +14,17 @@ function isLoggedIn($con)
             $user_data = mysqli_fetch_assoc($queryResult);
             return $user_data;
         }
+        return NULL;
     }
-    return NULL;
-}
 
-function isLoggedInRedirect($con)
-{
-    if(isset($_SESSION['user_id']))
+    if($redirect == 1)
     {
-        $id = $_SESSION['user_id'];
-        $query = "select * from users where user_id = '$id' limit 1";
-
-        $queryResult = mysqli_query($con, $query);
-        
-        if($queryResult && mysqli_num_rows($queryResult) > 0)
-        {
-            $user_data = mysqli_fetch_assoc($queryResult);
-            return $user_data;
-        }
+        header("Location: login.php");
+        die;
     }
-
-    //redirect to login if necessary on certain pages
-    header("Location: login.php");
-    die;
 }
 
-function genRand($length)
+function genRand($length) //generare de user_id de lungime random: 4<->length (cu valori random)
 {
     $text = "";
     if($length < 5)
@@ -72,12 +57,12 @@ function isAdmin($con)
         }
     }
 
-    //redirect to login if necessary on certain pages
+    //redirectare catre login daca e necesar
     header("Location: ../login.php");
     die;
 }
 
-function getMostPopular($con)
+function getMostPopular($con) //cel mai popular produs - index
 {
     $query = "SELECT * FROM (SELECT product_id,product_name, description, price, picture, discount, counter FROM boardgames 
             UNION
@@ -89,7 +74,7 @@ function getMostPopular($con)
     return $product_data;
 }
 
-function getRanking($con)
+function getRanking($con) //cele mai populare 5 produse - clasament
 {
     $query = "SELECT * FROM (SELECT product_id,product_name, description, price, picture, discount, counter FROM boardgames 
             UNION

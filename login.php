@@ -108,11 +108,11 @@ session_start();
 				<h2>Ești gata de cumpărături?</h2>
 				<div class="middletext_login">
 					<div class="warning">
-						<?php if($valid_entry == 2) : ?>
-							<p>Vă rugăm să completați toate câmpurile!</p>
-						<?php elseif($valid_entry == 1) : ?>
-							<p>Asocierea e-mail - parolă invalidă!</p>
-						<?php endif;?>
+						<?php if($valid_entry == 2)
+							echo('<p>Vă rugăm să completați toate câmpurile!</p>');	
+						elseif($valid_entry == 1)
+							echo('<p>Asocierea e-mail - parolă invalidă!</p>');
+						?>
 					</div>
 
 					<form method="post">
