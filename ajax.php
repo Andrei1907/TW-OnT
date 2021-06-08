@@ -13,11 +13,11 @@ session_start();
     if(isset($_POST['product_number'])){
         $nr = $_POST['product_number'];
         $product_table = $_POST['product_table'];
-        if($nr == 1) {$product_id =$_POST['product1_id'];}
-        elseif($nr == 2) {$product_id =$_POST['product2_id'];}
-        elseif($nr == 3) {$product_id =$_POST['product3_id'];}
-        elseif($nr == 4) {$product_id =$_POST['product4_id'];}
-        elseif($nr == 5) {$product_id =$_POST['product5_id'];}
+        if($nr == 1) {$product_id =$_POST['product1_id'];if(isset($_POST['product_table1'])) $product_table = $_POST['product_table1'];}
+        elseif($nr == 2) {$product_id =$_POST['product2_id'];if(isset($_POST['product_table2'])) $product_table = $_POST['product_table2'];}
+        elseif($nr == 3) {$product_id =$_POST['product3_id'];if(isset($_POST['product_table3'])) $product_table = $_POST['product_table3'];}
+        elseif($nr == 4) {$product_id =$_POST['product4_id'];if(isset($_POST['product_table4'])) $product_table = $_POST['product_table4'];}
+        elseif($nr == 5) {$product_id =$_POST['product5_id'];if(isset($_POST['product_table5'])) $product_table = $_POST['product_table5'];}
         else {$product_id =$_POST['product6_id'];}
 
         if($logged == 1)
@@ -40,5 +40,7 @@ session_start();
         }       
          
     }
+
+    
 
 ?>

@@ -8,6 +8,9 @@
 	reset_selected_queryB();
 	reset_selected_queryT();
 	$table = $_GET['table'];
+	if($table == 'boardgames')
+		$table_value = 1;
+	else $table_value = 2;
 	$product_id = $_GET['id'];
 
 	$query = "select * from $table where product_id='$product_id' limit 1";
@@ -54,7 +57,7 @@
 				<div class="container_image_text">
 				<img src="Poze/Products/<?php echo nvl($product_data['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic">
 					<p class="button_left"><?php echo $product_data['price']*((100-$product_data['discount'])/100); ?> RON</p>
-					<a href="#"><p class="button_right">Adaugă în coș</p></a>
+					<button type="submit" id="adaugare_cos" class="button_right" value='1'>Adaugă în coș</button>
 				</div>
 			</div>
 			
@@ -99,5 +102,25 @@
 	<footer>
 	</footer>
 	
+	<script>
+        document.getElementById("adaugare_cos").addEventListener('click', loadProduct);
+		
+		function loadProduct(){
+
+			var product_number = (this).value;
+			var product_table = <?php echo $table_value;?>;
+			var product1_id = <?php echo nvl($product_data['product_id'],0);?>;
+
+			var data = 'product1_id='+product1_id+'&product_number='+product_number+'&product_table='+product_table; 
+			console.log(data);
+			var xhr = new XMLHttpRequest();
+
+			xhr.open("POST", "ajax.php");
+			xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+			xhr.send(data);
+			console.log(data);
+		}
+    </script>
+
   </body>
 </html>

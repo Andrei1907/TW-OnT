@@ -64,9 +64,9 @@ function isAdmin($con)
 
 function getMostPopular($con) //cel mai popular produs - index
 {
-    $query = "SELECT * FROM (SELECT product_id,product_name, description, price, picture, discount, counter FROM boardgames 
+    $query = "SELECT * FROM (SELECT product_id,product_name, description, price, picture, discount, counter,1 AS product_table FROM boardgames 
             UNION
-            SELECT product_id,product_name, description, price, picture, discount, counter FROM toys) total ORDER BY total.counter desc limit 5";
+            SELECT product_id,product_name, description, price, picture, discount, counter,2 AS product_table FROM toys) total ORDER BY total.counter desc limit 5";
     $queryResult = mysqli_query($con, $query);
 
     $product_data = mysqli_fetch_assoc($queryResult);
@@ -76,9 +76,9 @@ function getMostPopular($con) //cel mai popular produs - index
 
 function getRanking($con) //cele mai populare 5 produse - clasament
 {
-    $query = "SELECT * FROM (SELECT product_id,product_name, description, price, picture, discount, counter FROM boardgames 
-            UNION
-            SELECT product_id,product_name, description, price, picture, discount, counter FROM toys) total ORDER BY total.counter desc limit 5";
+    $query = "SELECT * FROM (SELECT product_id,product_name, description, price, picture, discount, counter,1 AS product_table FROM boardgames 
+    UNION
+    SELECT product_id,product_name, description, price, picture, discount, counter,2 AS product_table FROM toys) total ORDER BY total.counter desc limit 5";
     $queryResult = mysqli_query($con, $query);
 
     if($product1 = mysqli_fetch_assoc($queryResult)){
@@ -695,6 +695,63 @@ function reset_selected_queryT(){
     {
         unset($_SESSION['$selected_queryT']);
     }
+}
+
+//interogare cos pentru pret si discount
+function getShoppingCartValue($con,$user_id){
+    $query = "SELECT shopping_cart.product_id, boardgames.product_name, price, discount, shopping_cart.sales  FROM shopping_cart JOIN boardgames ON boardgames.product_id=shopping_cart.product_id 
+        WHERE shopping_cart.id=".$user_id." AND shopping_cart.product_table=1
+    UNION
+        SELECT shopping_cart.product_id, toys.product_name, price, discount, shopping_cart.sales  FROM shopping_cart JOIN toys ON toys.product_id=shopping_cart.product_id 
+        WHERE shopping_cart.id=".$user_id." AND shopping_cart.product_table=2 
+    ORDER BY price desc";
+    $queryResult = mysqli_query($con, $query);
+    $total_price = 0;
+    $total_discount = 0;
+    if($queryResult && mysqli_num_rows($queryResult) > 0)
+    {
+        while($item = mysqli_fetch_assoc($queryResult)){
+            if(!empty($item)){
+                if($item['price'] != NULL){
+                $total_price += $item['price'] * $item['sales'];
+                $total_discount +=$item['price'] *$item['discount']/100* $item['sales'];
+                }
+            }
+        }
+        $data = array(
+            1 => $total_price ,
+            2 => $total_discount ,
+            3 => $user_id
+        );
+        return $data;
+    }
+    else{
+        return NULL;
+    }
+
+}
+function delete_all_products($con,$user_id){
+    $query = "SELECT * FROM shopping_cart WHERE id=".$user_id;
+    $queryResult = mysqli_query($con, $query);
+    if($queryResult && mysqli_num_rows($queryResult) > 0)
+    {
+        while($item = mysqli_fetch_assoc($queryResult)){
+            if(!empty($item)){
+                if($item['product_table'] == 1){
+                    $update_query = "UPDATE boardgames SET counter=counter+".$item['sales']." WHERE product_id = ".$item['product_id'];
+                }
+                else $update_query = "UPDATE toys SET counter=counter+".$item['sales']." WHERE product_id = ".$item['product_id'];
+                $update_queryResult = mysqli_query($con, $update_query);
+            }
+        }
+        $delete_query = "DELETE FROM shopping_cart WHERE id=".$user_id;
+        $delete_queryResult = mysqli_query($con, $delete_query);    
+    }
+
+}
+function delete_all_products_cart($con,$user_id){
+    $delete_query = "DELETE FROM shopping_cart WHERE id=".$user_id;
+    $delete_queryResult = mysqli_query($con, $delete_query);    
 }
 
 ?>

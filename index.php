@@ -74,7 +74,12 @@ session_start();
 			<div class="left_item_top">
 				<h3>Articolul favorit</h3>
 				<div class="container_image_text">
-					<a href="./item.php?table=boardgames&id=<?php echo $popular['product_id']; ?>"><img src="Poze/Products/<?php echo nvl($popular['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+					<?php 
+					if($popular['product_table'] == 1)
+						$table="boardgames";
+					else
+						$table="toys";?>
+					<a href="./item.php?table=<?php echo $table;?>&id=<?php echo $popular['product_id']; ?>"><img src="Poze/Products/<?php echo nvl($popular['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
 				</div>
 			</div>
 			
