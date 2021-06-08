@@ -47,12 +47,16 @@ session_start();
 			<div class="produs_top">
 				<p>#1</p>
 				<div class="mini_produs">
-				
+				<?php 
+					if($ranking[1]['product_table'] == 1)
+						$table="boardgames";
+					else
+						$table="toys";?>
 				<div class="container_image_text">
-					<a href="item.html"><img src="Poze/Products/<?php echo nvl($ranking[1]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
-					<a href="item.html"><p class="middletext"><?php echo $ranking[1]['product_name']; ?></p></a>
+					<a href="./item.php?table=<?php echo $table;?>&id=<?php echo $ranking[1]['product_id']; ?>?>"><img src="Poze/Products/<?php echo nvl($ranking[1]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+					<a href="./item.php?table=<?php echo $table;?>&id=<?php echo $ranking[1]['product_id']; ?>"><p class="middletext"><?php echo $ranking[1]['product_name']; ?></p></a>
 					<p class="button_left"><?php echo $ranking[1]['price']*((100-$ranking[1]['discount'])/100); ?> RON</p>
-					<a href="#"><p class="button_right">Adaugă în coș</p></a>
+					<button type="submit" id="adaugare_cos1" class="button_right" value='1'>Adaugă în coș</button>
 				</div>
 				
 				</div>
@@ -62,12 +66,16 @@ session_start();
 				<div class="produs_top2">
 					<p class="paragraph_top">#2</p>
 					<div class="mini_produs" >
-					
+					<?php 
+					if($ranking[2]['product_table'] == 1)
+						$table="boardgames";
+					else
+						$table="toys";?>
 						<div class="container_image_text">
-							<a href="item.html"><img src="Poze/Products/<?php echo nvl($ranking[2]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
-							<a href="item.html"><p class="middletext"><?php echo $ranking[2]['product_name']; ?></p></a>
+							<a href="./item.php?table=<?php echo $table;?>&id=<?php echo $ranking[2]['product_id']; ?>"><img src="Poze/Products/<?php echo nvl($ranking[2]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+							<a href="./item.php?table=<?php echo $table;?>&id=<?php echo $ranking[2]['product_id']; ?>"><p class="middletext"><?php echo $ranking[2]['product_name']; ?></p></a>
 							<p class="button_left"><?php echo $ranking[2]['price']*((100-$ranking[2]['discount'])/100); ?> RON</p>
-							<a href="#"><p class="button_right">Adaugă</p></a>
+							<button type="submit" id="adaugare_cos2" class="button_right" value='2'>Adaugă în coș</button>
 						</div>
 						
 					</div>
@@ -75,12 +83,16 @@ session_start();
 				<div class="produs_top3">
 					<p class="paragraph_top">#3</p>
 					<div class="mini_produs" >
-					
+					<?php 
+					if($ranking[3]['product_table'] == 1)
+						$table="boardgames";
+					else
+						$table="toys";?>
 						<div class="container_image_text">
-							<a href="item.html"><img src="Poze/Products/<?php echo nvl($ranking[3]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
-							<a href="item.html"><p class="middletext"><?php echo $ranking[3]['product_name']; ?></p></a>
+							<a href="./item.php?table=<?php echo $table;?>&id=<?php echo $ranking[3]['product_id']; ?>"><img src="Poze/Products/<?php echo nvl($ranking[3]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+							<a href="./item.php?table=<?php echo $table;?>&id=<?php echo $ranking[3]['product_id']; ?>"><p class="middletext"><?php echo $ranking[3]['product_name']; ?></p></a>
 							<p class="button_left"><?php echo $ranking[3]['price']*((100-$ranking[3]['discount'])/100); ?> RON</p>
-							<a href="#"><p class="button_right">Adaugă</p></a>
+							<button type="submit" id="adaugare_cos3" class="button_right" value='3'>Adaugă în coș</button>
 						</div>
 					
 					</div>
@@ -88,12 +100,16 @@ session_start();
 				<div class="produs_top4">
 					<p class="paragraph_top">#4</p>
 					<div class="mini_produs" >
-					
+					<?php 
+					if($ranking[4]['product_table'] == 1)
+						$table="boardgames";
+					else
+						$table="toys";?>
 						<div class="container_image_text">
-							<a href="item.html"><img src="Poze/Products/<?php echo nvl($ranking[4]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
-							<a href="item.html"><p class="middletext"><?php echo $ranking[4]['product_name']; ?></p></a>
+							<a href="./item.php?table=<?php echo $table;?>&id=<?php echo $ranking[4]['product_id']; ?>"><img src="Poze/Products/<?php echo nvl($ranking[4]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+							<a href="./item.php?table=<?php echo $table;?>&id=<?php echo $ranking[4]['product_id']; ?>"><p class="middletext"><?php echo $ranking[4]['product_name']; ?></p></a>
 							<p class="button_left"><?php echo $ranking[4]['price']*((100-$ranking[4]['discount'])/100); ?> RON</p>
-							<a href="#"><p class="button_right">Adaugă</p></a>
+							<button type="submit" id="adaugare_cos4" class="button_right" value='4'>Adaugă în coș</button>
 						</div>
 					
 					</div>
@@ -101,12 +117,16 @@ session_start();
 				<div class="produs_top5">
 					<p class="paragraph_top">#5</p>
 					<div class="mini_produs" >
-					
+					<?php 
+					if($ranking[5]['product_table'] == 1)
+						$table="boardgames";
+					else
+						$table="toys";?>
 						<div class="container_image_text">
-							<a href="item.html"><img src="Poze/Products/<?php echo nvl($ranking[5]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
-							<a href="item.html"><p class="middletext"><?php echo $ranking[5]['product_name']; ?></p></a>
+							<a href="./item.php?table=<?php echo $table;?>&id=<?php echo $ranking[5]['product_id']; ?>"><img src="Poze/Products/<?php echo nvl($ranking[5]['picture'],"Basic.jpg"); ?>" alt="Item" class="item_pic"></a>
+							<a href="./item.php?table=<?php echo $table;?>&id=<?php echo $ranking[5]['product_id']; ?>"><p class="middletext"><?php echo $ranking[5]['product_name']; ?></p></a>
 							<p class="button_left"><?php echo $ranking[5]['price']*((100-$ranking[5]['discount'])/100); ?> RON</p>
-							<a href="#"><p class="button_right">Adaugă</p></a>
+							<button type="submit" id="adaugare_cos5" class="button_right" value='5'>Adaugă în coș</button>
 						</div>
 					
 					</div>
@@ -128,6 +148,39 @@ session_start();
 	<footer>
 	</footer>
 	
+	<script>
+        document.getElementById("adaugare_cos1").addEventListener('click', loadProduct);
+		document.getElementById("adaugare_cos2").addEventListener('click', loadProduct);
+		document.getElementById("adaugare_cos3").addEventListener('click', loadProduct);
+		document.getElementById("adaugare_cos4").addEventListener('click', loadProduct);
+		document.getElementById("adaugare_cos5").addEventListener('click', loadProduct);
+
+		
+		function loadProduct(){
+
+			var product_number = (this).value;
+			var product1_id = <?php echo nvl($ranking[1]['product_id'],0)?>;
+			var product2_id = <?php echo nvl($ranking[2]['product_id'],0)?>;
+			var product3_id = <?php echo nvl($ranking[3]['product_id'],0)?>;
+			var product4_id = <?php echo nvl($ranking[4]['product_id'],0)?>;
+			var product5_id = <?php echo nvl($ranking[5]['product_id'],0)?>;
+
+			var product_table1 = <?php echo nvl($ranking[1]['product_table'],0)?>;
+			var product_table2 = <?php echo nvl($ranking[2]['product_table'],0)?>;
+			var product_table3 = <?php echo nvl($ranking[3]['product_table'],0)?>;
+			var product_table4 = <?php echo nvl($ranking[4]['product_table'],0)?>;
+			var product_table5 = <?php echo nvl($ranking[5]['product_table'],0)?>;
+
+
+			var data = 'product1_id='+product1_id+'&product2_id='+product2_id+'&product3_id='+product3_id+'&product4_id='+product4_id+'&product5_id='+product5_id+'&product_number='+product_number+'&product_table=1'+'&product_table1='+product_table1+'&product_table2='+product_table2+'&product_table3='+product_table3+'&product_table4='+product_table4+'&product_table5='+product_table5; 
+			var xhr = new XMLHttpRequest();
+
+			xhr.open("POST", "ajax.php");
+			xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+			xhr.send(data);
+			console.log(data);
+		}
+    </script>
   </body>
 </html>
 
