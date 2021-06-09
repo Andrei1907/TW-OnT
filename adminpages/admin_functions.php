@@ -153,9 +153,9 @@ session_start();
 
     //add_new_toy
     if(isset($_POST['add_new_toy'])){
-        if(!empty($_POST['product_id']) && !empty($_POST['product_name']) && !empty($_POST['age']) && !empty($_POST['material']) && !empty($_POST['color']) && !empty($_POST['price']) && !empty($_POST['description']) && !empty($_FILES['picture']) && $_POST['age']!=0){
+        if(!empty($_POST['product_id_add']) && !empty($_POST['product_name']) && !empty($_POST['age']) && !empty($_POST['material']) && !empty($_POST['color']) && !empty($_POST['price']) && !empty($_POST['description']) && !empty($_FILES['picture']) && $_POST['age']!=0){
             
-            $product_id=$_POST['product_id'];
+            $product_id=$_POST['product_id_add'];
             $product_name=$_POST['product_name'];
             $age_value=$_POST['age'];
             $material=$_POST['material'];
